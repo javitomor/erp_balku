@@ -1,11 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balku.erp_balku.controller.AltaClienteController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="491.0" prefWidth="319.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.balku.erp_balku.controller.AltaClienteController">
+   <children>
+      <VBox prefHeight="603.0" prefWidth="299.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #C6C6C6;">
+               <children>
+                  <ImageView fitHeight="51.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/client.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="2.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="NUEVO CLIENTE">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <JFXTextField focusColor="BLUE" labelFloat="true" promptText="Nombre" unFocusColor="GREY">
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </JFXTextField>
+            <JFXTextField focusColor="BLUE" labelFloat="true" promptText="Apellido" unFocusColor="GREY">
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </JFXTextField>
+            <JFXTextField focusColor="BLUE" labelFloat="true" promptText="DNI" unFocusColor="GREY">
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </JFXTextField>
+            <JFXDatePicker defaultColor="BLUE" editable="false" prefHeight="57.0" prefWidth="297.0" promptText="Fecha Nacimiento">
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </JFXDatePicker>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <RadioButton fx:id="rbMasculino" mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="GroupSexo" />
+                     </toggleGroup>
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/Man-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </RadioButton>
+                  <RadioButton fx:id="rbFemenino" mnemonicParsing="false" toggleGroup="$GroupSexo">
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/Woman-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </RadioButton>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+            <JFXTextField labelFloat="true" promptText="Dirección" unFocusColor="GREY">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </JFXTextField>
+            <HBox prefHeight="13.0" prefWidth="284.0">
+               <children>
+                  <JFXTextField focusColor="BLUE" labelFloat="true" prefHeight="27.0" prefWidth="209.0" promptText="Teléfono" unFocusColor="GREY">
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </JFXTextField>
+                  <JFXToggleButton prefHeight="45.0" prefWidth="84.0" size="7.0" text="WP">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </JFXToggleButton>
+               </children>
+            </HBox>
+            <JFXTextField focusColor="BLUE" labelFloat="true" promptText="E-mail" unFocusColor="GREY">
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </JFXTextField>
+            <JFXToggleButton text="Activo">
+               <padding>
+                  <Insets left="100.0" top="20.0" />
+               </padding>
+            </JFXToggleButton>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" defaultButton="true" prefHeight="30.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: green;" text="Guardar" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Apple Color Emoji" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" prefHeight="30.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: red;" text="Cancelar" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="40.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets left="10.0" top="15.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="15.0" top="15.0" />
+         </padding>
+      </VBox>
+   </children>
 </AnchorPane>
