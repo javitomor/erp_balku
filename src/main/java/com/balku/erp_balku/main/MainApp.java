@@ -1,4 +1,4 @@
-package com.balku.erp_balku;
+package com.balku.erp_balku.main;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -12,10 +12,10 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/cliente/AltaCliente.fxml"));
         
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
+//        scene.getStylesheets().add("/styles/Styles.css");
         
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
