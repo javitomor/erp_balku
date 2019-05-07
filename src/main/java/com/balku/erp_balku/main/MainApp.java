@@ -1,19 +1,29 @@
 package com.balku.erp_balku.main;
 
+import com.balku.erp_balku.controller.ModelController;
+import com.balku.erp_balku.model.Cliente;
+import java.util.List;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javax.persistence.EntityManager;
 
 
 public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/cliente/AltaCliente.fxml"));
         
+        ModelController modelController = new ModelController();
+        EntityManager manager = modelController.createEntities();
+        
+        List<Cliente> clientes = (List<Cliente>) manager.createQuery("FROM Mensaje").getResultList();
+        System.out.println("En esta base de datos hay "+clientes.size()+" mensajes");
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/view/cliente/AltaCliente.fxml"));
         Scene scene = new Scene(root);
 //        scene.getStylesheets().add("/styles/Styles.css");
         
