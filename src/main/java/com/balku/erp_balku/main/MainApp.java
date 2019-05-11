@@ -14,14 +14,13 @@ import javax.persistence.EntityManager;
 
 public class MainApp extends Application {
 
+    private static EntityManager manager;
+            
     @Override
     public void start(Stage stage) throws Exception {
+
         
-        ModelController modelController = new ModelController();
-        EntityManager manager = modelController.createEntities();
         
-        List<Cliente> clientes = (List<Cliente>) manager.createQuery("FROM Mensaje").getResultList();
-        System.out.println("En esta base de datos hay "+clientes.size()+" mensajes");
         
         Parent root = FXMLLoader.load(getClass().getResource("/view/cliente/AltaCliente.fxml"));
         Scene scene = new Scene(root);
@@ -32,6 +31,12 @@ public class MainApp extends Application {
         stage.show();
     }
 
+    @Override
+    public void init(){
+    
+        manager = ModelController.getEntityManager();
+        
+    }
     /**
      * The main() method is ignored in correctly deployed JavaFX application.
      * main() serves only as fallback in case the application can not be

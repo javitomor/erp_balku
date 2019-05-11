@@ -33,7 +33,7 @@
                   </ImageView>
                   <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="NUEVO CLIENTE">
                      <font>
-                        <Font name="System Bold" size="21.0" />
+                        <Font name="Arial Bold" size="21.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="20.0" />
@@ -41,29 +41,29 @@
                   </Text>
                </children>
             </HBox>
-            <JFXTextField focusColor="#1b84d1" labelFloat="true" promptText="Nombre" unFocusColor="GREY">
+            <JFXTextField fx:id="nombre" focusColor="#1b84d1" labelFloat="true" promptText="Nombre" unFocusColor="GREY">
                <padding>
                   <Insets top="30.0" />
                </padding>
             </JFXTextField>
-            <JFXTextField focusColor="#1b84d1" labelFloat="true" promptText="Apellido" unFocusColor="GREY">
+            <JFXTextField fx:id="apellido" focusColor="#1b84d1" labelFloat="true" promptText="Apellido" unFocusColor="GREY">
                <padding>
                   <Insets top="30.0" />
                </padding>
             </JFXTextField>
-            <JFXTextField focusColor="#1b84d1" labelFloat="true" promptText="DNI" unFocusColor="GREY">
+            <JFXTextField fx:id="dni" focusColor="#1b84d1" labelFloat="true" promptText="DNI" unFocusColor="GREY">
                <padding>
                   <Insets top="30.0" />
                </padding>
             </JFXTextField>
-            <JFXDatePicker defaultColor="#1b84d1" editable="false" prefHeight="57.0" prefWidth="297.0" promptText="Fecha Nacimiento">
+            <JFXDatePicker fx:id="fechaNacimiento" defaultColor="#1b84d1" editable="false" prefHeight="57.0" prefWidth="297.0" promptText="Fecha Nacimiento">
                <padding>
                   <Insets top="30.0" />
                </padding>
             </JFXDatePicker>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <RadioButton fx:id="rbMasculino" mnemonicParsing="false">
+                  <RadioButton fx:id="sexoMasculino" mnemonicParsing="false">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -78,7 +78,7 @@
                         </ImageView>
                      </graphic>
                   </RadioButton>
-                  <RadioButton fx:id="rbFemenino" mnemonicParsing="false" toggleGroup="$GroupSexo">
+                  <RadioButton fx:id="sexoFemenino" mnemonicParsing="false" toggleGroup="$GroupSexo">
                      <HBox.margin>
                         <Insets left="80.0" />
                      </HBox.margin>
@@ -95,14 +95,14 @@
                   <Insets top="20.0" />
                </padding>
             </HBox>
-            <JFXTextField focusColor="#1b84d1" labelFloat="true" promptText="Dirección" unFocusColor="GREY">
+            <JFXTextField fx:id="direccion" focusColor="#1b84d1" labelFloat="true" promptText="Dirección" unFocusColor="GREY">
                <padding>
                   <Insets top="20.0" />
                </padding>
             </JFXTextField>
             <HBox prefHeight="13.0" prefWidth="284.0">
                <children>
-                  <JFXTextField focusColor="#1b84d1" labelFloat="true" prefHeight="27.0" prefWidth="209.0" promptText="Teléfono" unFocusColor="GREY">
+                  <JFXTextField fx:id="telefono" focusColor="#1b84d1" labelFloat="true" prefHeight="27.0" prefWidth="209.0" promptText="Teléfono" unFocusColor="GREY">
                      <HBox.margin>
                         <Insets top="30.0" />
                      </HBox.margin>
@@ -110,36 +110,36 @@
                         <Insets right="5.0" />
                      </padding>
                   </JFXTextField>
-                  <JFXToggleButton prefHeight="45.0" prefWidth="84.0" size="7.0" text="WP" toggleColor="#1b84d1" toggleLineColor="#d9d9d9">
+                  <JFXToggleButton fx:id="whatsapp" prefHeight="45.0" prefWidth="84.0" size="7.0" text="WP" toggleColor="#1b84d1" toggleLineColor="#d9d9d9">
                      <padding>
                         <Insets top="10.0" />
                      </padding>
                   </JFXToggleButton>
                </children>
             </HBox>
-            <JFXTextField focusColor="#1b84d1" labelFloat="true" promptText="E-mail" unFocusColor="GREY">
+            <JFXTextField fx:id="email" focusColor="#1b84d1" labelFloat="true" promptText="E-mail" unFocusColor="GREY">
                <padding>
                   <Insets top="30.0" />
                </padding>
             </JFXTextField>
-            <JFXTextField disable="true" focusColor="#1b84d1" labelFloat="true" promptText="Usuario" unFocusColor="GREY">
+            <JFXTextField fx:id="usuario" disable="true" focusColor="#1b84d1" labelFloat="true" promptText="Usuario" unFocusColor="GREY">
                <padding>
                   <Insets top="30.0" />
                </padding>
             </JFXTextField>
-            <JFXPasswordField disable="true" focusColor="#1b84d1" labelFloat="true" promptText="Password">
+            <JFXPasswordField fx:id="contrasena" disable="true" focusColor="#1b84d1" labelFloat="true" promptText="Password">
                <padding>
                   <Insets top="30.0" />
                </padding>
             </JFXPasswordField>
-            <JFXToggleButton selected="true" text="Activo" toggleColor="#1b84d1" toggleLineColor="#d9d9d9">
+            <JFXToggleButton fx:id="estadoActivo" selected="true" text="Activo" toggleColor="#1b84d1" toggleLineColor="#d9d9d9">
                <padding>
                   <Insets left="100.0" top="20.0" />
                </padding>
             </JFXToggleButton>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" defaultButton="true" prefHeight="30.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #686868;" text="Guardar" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <JFXButton fx:id="btnGuardar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" defaultButton="true" onMouseClicked="#guardarCliente" prefHeight="30.0" prefWidth="100.0" ripplerFill="GREEN" style="-fx-background-color: #686868;" text="Guardar" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="Apple Color Emoji" size="13.0" />
                      </font>
@@ -150,7 +150,7 @@
                         <Insets />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" prefHeight="30.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #686868;" text="Cancelar" textFill="WHITE">
+                  <JFXButton fx:id="btnCancelar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" prefHeight="30.0" prefWidth="100.0" ripplerFill="RED" style="-fx-background-color: #686868;" text="Cancelar" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

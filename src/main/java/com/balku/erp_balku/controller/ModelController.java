@@ -15,11 +15,12 @@ import javax.persistence.Persistence;
  */
 public class ModelController {
     
-    private EntityManagerFactory emf;
-    private EntityManager manager;
+    private static EntityManagerFactory emf;
+    private static EntityManager manager;
     
     public void ModelController(){}
-    public EntityManager createEntities(){
+    
+    public static EntityManager getEntityManager(){
         
         emf = Persistence.createEntityManagerFactory("Persistencia");
         manager = emf.createEntityManager();
