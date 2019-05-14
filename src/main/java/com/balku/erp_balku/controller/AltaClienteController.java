@@ -90,9 +90,21 @@ public class AltaClienteController implements Initializable {
         Cliente cli = new Cliente();
         cli.setNombre(this.nombre.getText());
         cli.setApellido(this.apellido.getText());
-        cli.setId(1L);
+        cli.setDni(Long.parseLong(this.dni.getText()));
+        cli.setFechaNacimiento(this.fechaNacimiento.getValue());
+     
+        RadioButton selectedRadioButton = (RadioButton) this.GroupSexo.getSelectedToggle();
+        cli.setSexo(selectedRadioButton.getText());
         
-//        cli.setFechaNacimiento(new GregorianCalendar(this.fechaNacimiento.getValue()).getTime());
+        cli.setDireccion(this.direccion.getText());
+        cli.setTelefono(this.telefono.getText());
+        cli.setWhatsapp(this.whatsapp.isSelected());
+        cli.setEmail(this.email.getText());
+        cli.setEstadoActivo(this.estadoActivo.isSelected());
+        
+//        cli.setUsuario(this.usuario.getText());
+//        cli.setContrasena(this.contrasena.getText());
+        
         em.getTransaction().begin();
         em.persist(cli);
         em.getTransaction().commit();

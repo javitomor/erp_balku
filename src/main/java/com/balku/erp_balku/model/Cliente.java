@@ -6,9 +6,12 @@
 package com.balku.erp_balku.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -20,7 +23,7 @@ import javax.persistence.Table;
 @Table(name="CLIENTE")
 public class Cliente implements Serializable{
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column
@@ -33,13 +36,10 @@ public class Cliente implements Serializable{
     private Long dni;
 
     @Column
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
 
     @Column
-    private boolean sexoMasculino;
-
-    @Column
-    private boolean sexoFemenino;
+    private String sexo;
 
     @Column
     private String direccion;
@@ -94,28 +94,21 @@ public class Cliente implements Serializable{
         this.dni = dni;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public boolean isSexoMasculino() {
-        return sexoMasculino;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
-
-    public void setSexoMasculino(boolean sexoMasculino) {
-        this.sexoMasculino = sexoMasculino;
-    }
-
-    public boolean isSexoFemenino() {
-        return sexoFemenino;
-    }
-
-    public void setSexoFemenino(boolean sexoFemenino) {
-        this.sexoFemenino = sexoFemenino;
+    
+    public String getSexo(){
+    
+        return sexo;
     }
 
     public String getDireccion() {
@@ -177,13 +170,12 @@ public class Cliente implements Serializable{
     public Cliente() {
     }
 
-    public Cliente(String nombre, String apellido, Long dni, Date fechaNacimiento, boolean sexoMasculino, boolean sexoFemenino, String direccion, String telefono, boolean whatsapp, String email, String usuario, String contrasena, boolean estadoActivo) {
+    public Cliente(String nombre, String apellido, Long dni, LocalDate fechaNacimiento, String sexo, String direccion, String telefono, boolean whatsapp, String email, String usuario, String contrasena, boolean estadoActivo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.fechaNacimiento = fechaNacimiento;
-        this.sexoMasculino = sexoMasculino;
-        this.sexoFemenino = sexoFemenino;
+        this.sexo = sexo;
         this.direccion = direccion;
         this.telefono = telefono;
         this.whatsapp = whatsapp;
@@ -195,7 +187,7 @@ public class Cliente implements Serializable{
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", fechaNacimiento=" + fechaNacimiento + ", sexoMasculino=" + sexoMasculino + ", sexoFemenino=" + sexoFemenino + ", direccion=" + direccion + ", telefono=" + telefono + ", whatsapp=" + whatsapp + ", email=" + email + ", usuario=" + usuario + ", contrasena=" + contrasena + ", estadoActivo=" + estadoActivo + '}';
+        return "Cliente{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", fechaNacimiento=" + fechaNacimiento + ", sexo=" + sexo + ", direccion=" + direccion + ", telefono=" + telefono + ", whatsapp=" + whatsapp + ", email=" + email + ", usuario=" + usuario + ", contrasena=" + contrasena + ", estadoActivo=" + estadoActivo + '}';
     }
      
     
