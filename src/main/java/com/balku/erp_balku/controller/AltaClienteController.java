@@ -6,20 +6,22 @@
 package com.balku.erp_balku.controller;
 
 import com.balku.erp_balku.model.Cliente;
+import com.balku.erp_balku.model.Provincia;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
-import java.util.GregorianCalendar;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javax.persistence.EntityManager;
+
 /**
  * FXML Controller class
  *
@@ -27,16 +29,27 @@ import javax.persistence.EntityManager;
  */
 public class AltaClienteController implements Initializable {
 
-    private EntityManager em  = ModelController.getEntityManager();;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    } 
-    
-    
+        
+        EntityManager man = ModelController.getEntityManager();
+        List<Provincia> provincias = (List<Provincia>) man.createQuery("FROM Provincia").getResultList();
+        
+        System.out.println("En esta base de datos hay " + provincias.size() + " provincias");
+        
+        for (Provincia prov: provincias){
+            
+            provincia.getItems().add(prov.getId().intValue()-1, prov.getProvinciaNombre());
+            System.out.println("id="+prov.getId().intValue()+", provincia="+prov.getProvinciaNombre());
+        }
+        
+        man.close();
+
+    }
+
     @FXML
     private JFXTextField nombre;
 
@@ -47,9 +60,15 @@ public class AltaClienteController implements Initializable {
     private JFXTextField dni;
 
     @FXML
+    private JFXComboBox<String> provincia;
+
+    @FXML
+    private JFXComboBox<String> localidad;
+
+    @FXML
     private JFXDatePicker fechaNacimiento;
 
-      @FXML
+    @FXML
     private RadioButton sexoMasculino;
 
     @FXML
@@ -84,32 +103,33 @@ public class AltaClienteController implements Initializable {
 
     @FXML
     private JFXButton btnCancelar;
-    
-    public void guardarCliente(){
-  
+
+    public void guardarCliente() {
+
+        EntityManager em = ModelController.getEntityManager();
+
         Cliente cli = new Cliente();
         cli.setNombre(this.nombre.getText());
         cli.setApellido(this.apellido.getText());
         cli.setDni(Long.parseLong(this.dni.getText()));
         cli.setFechaNacimiento(this.fechaNacimiento.getValue());
-     
+
         RadioButton selectedRadioButton = (RadioButton) this.GroupSexo.getSelectedToggle();
         cli.setSexo(selectedRadioButton.getText());
-        
+
         cli.setDireccion(this.direccion.getText());
         cli.setTelefono(this.telefono.getText());
         cli.setWhatsapp(this.whatsapp.isSelected());
         cli.setEmail(this.email.getText());
         cli.setEstadoActivo(this.estadoActivo.isSelected());
-        
+
 //        cli.setUsuario(this.usuario.getText());
 //        cli.setContrasena(this.contrasena.getText());
-        
         em.getTransaction().begin();
         em.persist(cli);
         em.getTransaction().commit();
-        
-        
+        em.close();
+
 //        List<Cliente> clientes = (List<Cliente>) em.createQuery("FROM Cliente").getResultList();
 //        System.out.println("En esta base de datos hay "+clientes.size()+" clientes");
     }
