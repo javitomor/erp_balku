@@ -17,6 +17,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 import java.util.List;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -34,20 +35,13 @@ public class AltaClienteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         EntityManager man = ModelController.getEntityManager();
         List<Provincia> provincias = (List<Provincia>) man.createQuery("FROM Provincia").getResultList();
-        
-        System.out.println("En esta base de datos hay " + provincias.size() + " provincias");
-        
-        for (Provincia prov: provincias){
-            
-            provincia.getItems().add(prov.getId().intValue()-1, prov.getProvinciaNombre());
-            System.out.println("id="+prov.getId().intValue()+", provincia="+prov.getProvinciaNombre());
+        for (Provincia prov : provincias) {
+            provincia.getItems().add(prov);
         }
-        
         man.close();
-
     }
 
     @FXML
@@ -60,7 +54,7 @@ public class AltaClienteController implements Initializable {
     private JFXTextField dni;
 
     @FXML
-    private JFXComboBox<String> provincia;
+    private JFXComboBox<Provincia> provincia;
 
     @FXML
     private JFXComboBox<String> localidad;
@@ -123,14 +117,15 @@ public class AltaClienteController implements Initializable {
         cli.setEmail(this.email.getText());
         cli.setEstadoActivo(this.estadoActivo.isSelected());
 
-//        cli.setUsuario(this.usuario.getText());
-//        cli.setContrasena(this.contrasena.getText());
         em.getTransaction().begin();
         em.persist(cli);
         em.getTransaction().commit();
         em.close();
 
-//        List<Cliente> clientes = (List<Cliente>) em.createQuery("FROM Cliente").getResultList();
-//        System.out.println("En esta base de datos hay "+clientes.size()+" clientes");
+    }
+
+    public void selccionarProvincia(ActionEvent envt) {
+        System.out.println("nombre: " + provincia.getSelectionModel().getSelectedItem().getProvinciaNombre()
+                + ", id: " + provincia.getSelectionModel().getSelectedItem().getId());
     }
 }

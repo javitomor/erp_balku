@@ -92,7 +92,7 @@ public class Provincia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.balku.erp_balku.model.Provincia[ id=" + id + ", provinciaNombre=" + provinciaNombre + " ]";
+        return provinciaNombre;
     }
 
 }
