@@ -6,12 +6,17 @@
 package com.balku.erp_balku.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -31,16 +36,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Provincia implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "id", nullable = false)
     private Long id;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "provincia_nombre", nullable = false, length = 50)
     private String provinciaNombre;
+
+    @OneToMany(mappedBy = "provincia", cascade = CascadeType.ALL, fetch = FetchType.EAGER) //nombre del campo en el Objeto Localidad que se corresponde
+    private List<Localidad> localidad = new ArrayList<>();
 
     public Provincia() {
     }
@@ -68,6 +78,14 @@ public class Provincia implements Serializable {
 
     public void setProvinciaNombre(String provinciaNombre) {
         this.provinciaNombre = provinciaNombre;
+    }
+
+    public List<Localidad> getLocalidad() {
+        return localidad;
+    }
+
+    public void setLocalidad(List<Localidad> localidad) {
+        this.localidad = localidad;
     }
 
     @Override

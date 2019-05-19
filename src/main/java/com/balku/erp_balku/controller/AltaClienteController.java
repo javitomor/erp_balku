@@ -6,6 +6,7 @@
 package com.balku.erp_balku.controller;
 
 import com.balku.erp_balku.model.Cliente;
+import com.balku.erp_balku.model.Localidad;
 import com.balku.erp_balku.model.Provincia;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +18,8 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 import java.util.List;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
@@ -124,8 +127,17 @@ public class AltaClienteController implements Initializable {
 
     }
 
-    public void selccionarProvincia(ActionEvent envt) {
-        System.out.println("nombre: " + provincia.getSelectionModel().getSelectedItem().getProvinciaNombre()
-                + ", id: " + provincia.getSelectionModel().getSelectedItem().getId());
+    public void cargarLocalidad(ActionEvent envt) {
+
+        List<Localidad> localidades = provincia.getSelectionModel().getSelectedItem().getLocalidad();
+
+        localidad.getItems().remove(0, localidad.getItems().size());
+
+        for (Localidad loc : localidades) {
+            localidad.getItems().add(loc.getNombre());
+        }
+        
+        //AGREGAR ORDER BY O BUSQUEDA DENTRO DEL COMBO
+
     }
 }

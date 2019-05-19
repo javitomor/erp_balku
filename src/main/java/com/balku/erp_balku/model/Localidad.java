@@ -7,11 +7,16 @@ package com.balku.erp_balku.model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,28 +34,33 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Localidad.findById", query = "SELECT l FROM Localidad l WHERE l.id = :id")
     , @NamedQuery(name = "Localidad.findByNombre", query = "SELECT l FROM Localidad l WHERE l.nombre = :nombre")
     , @NamedQuery(name = "Localidad.findByCp", query = "SELECT l FROM Localidad l WHERE l.cp = :cp")
-    , @NamedQuery(name = "Localidad.findByProvinciaId", query = "SELECT l FROM Localidad l WHERE l.provinciaId = :provinciaId")})
+//    , @NamedQuery(name = "Localidad.findByProvinciaId", query = "SELECT l FROM Localidad l WHERE l.provinciaId = :provinciaId")
+})
 public class Localidad implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "id", nullable = false)
+
     private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
     @Column(name = "nombre", nullable = false, length = 60)
     private String nombre;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "cp", nullable = false)
     private int cp;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "provincia_id", nullable = false)
-    private short provinciaId;
+
+//    @Column(name = "provincia_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "provincia_id")
+    private Provincia provincia;
 
     public Localidad() {
     }
@@ -59,11 +69,11 @@ public class Localidad implements Serializable {
         this.id = id;
     }
 
-    public Localidad(Long id, String nombre, int cp, short provinciaId) {
+    public Localidad(Long id, String nombre, int cp, Provincia provinciaId) {
         this.id = id;
         this.nombre = nombre;
         this.cp = cp;
-        this.provinciaId = provinciaId;
+        this.provincia = provincia;
     }
 
     public Long getId() {
@@ -90,12 +100,12 @@ public class Localidad implements Serializable {
         this.cp = cp;
     }
 
-    public short getProvinciaId() {
-        return provinciaId;
+    public Provincia getProvincia() {
+        return provincia;
     }
 
-    public void setProvinciaId(short provinciaId) {
-        this.provinciaId = provinciaId;
+    public void setProvincia(Provincia provinciaId) {
+        this.provincia = provinciaId;
     }
 
     @Override
@@ -120,7 +130,7 @@ public class Localidad implements Serializable {
 
     @Override
     public String toString() {
-        return "com.balku.erp_balku.model.Localidad[ id=" + id + ", nombre= " + nombre + "]";
+        return "com.balku.erp_balku.model.Localidad[ id=" + id + ", nombre= " + nombre + "]"+" Provincia= "+provincia;
     }
 
 }
