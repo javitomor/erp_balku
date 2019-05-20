@@ -6,6 +6,8 @@
 package com.balku.erp_balku.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -61,8 +64,8 @@ public class Localidad implements Serializable {
     @JoinColumn(name = "provincia_id")
     private Provincia provincia;
 
-    @OneToOne(mappedBy = "localidad", fetch = FetchType.LAZY)
-    private Cliente cliente;
+    @OneToMany(mappedBy = "localidad", fetch = FetchType.LAZY)
+    private List<Cliente> cliente = new ArrayList<>();
 
     public Localidad() {
     }
@@ -110,12 +113,12 @@ public class Localidad implements Serializable {
         this.provincia = provinciaId;
     }
 
-    public Cliente getCliente() {
+    public List<Cliente> getCliente() {
 
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(List<Cliente> cliente) {
         this.cliente = cliente;
     }
 
