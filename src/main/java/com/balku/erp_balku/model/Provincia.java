@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -50,6 +51,7 @@ public class Provincia implements Serializable {
     private String provinciaNombre;
 
     @OneToMany(mappedBy = "provincia", cascade = CascadeType.ALL, fetch = FetchType.EAGER) //nombre del campo en el Objeto Localidad que se corresponde
+    @OrderBy(value = "nombre")
     private List<Localidad> localidad = new ArrayList<>();
 
     public Provincia() {

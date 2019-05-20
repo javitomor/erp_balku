@@ -22,6 +22,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 
 /**
@@ -117,7 +118,7 @@ public class AltaClienteController implements Initializable {
         cli.setWhatsapp(this.whatsapp.isSelected());
         cli.setEmail(this.email.getText());
         cli.setEstadoActivo(this.estadoActivo.isSelected());
-        
+
         cli.setLocalidad(localidad.getSelectionModel().getSelectedItem());
 
         em.getTransaction().begin();
@@ -136,8 +137,12 @@ public class AltaClienteController implements Initializable {
         for (Localidad loc : localidades) {
             localidad.getItems().add(loc);
         }
-        
-        //AGREGAR ORDER BY O BUSQUEDA DENTRO DEL COMBO
 
+        //AGREGAR ORDER BY O BUSQUEDA DENTRO DEL COMBO
+    }
+
+    public void closeButtonAction(ActionEvent event) {
+        Stage currentStage = (Stage) btnCancelar.getScene().getWindow();
+        currentStage.close();
     }
 }

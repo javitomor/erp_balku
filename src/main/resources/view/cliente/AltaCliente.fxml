@@ -128,12 +128,12 @@
                               <Insets top="30.0" />
                            </padding>
                         </JFXTextField>
-                        <JFXComboBox fx:id="provincia" focusColor="#1b84d1" labelFloat="true" onAction="#cargarLocalidad" prefHeight="47.0" prefWidth="235.0" promptText="Provincia" unFocusColor="GREY">
+                        <JFXComboBox fx:id="provincia" editable="true" focusColor="#1b84d1" labelFloat="true" onAction="#cargarLocalidad" prefHeight="47.0" prefWidth="235.0" promptText="Provincia" unFocusColor="GREY">
                            <padding>
                               <Insets top="20.0" />
                            </padding>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="localidad" focusColor="#1b84d1" labelFloat="true" prefHeight="47.0" prefWidth="246.0" promptText="Localidad" unFocusColor="GREY">
+                        <JFXComboBox fx:id="localidad" editable="true" focusColor="#1b84d1" labelFloat="true" prefHeight="47.0" prefWidth="246.0" promptText="Localidad" unFocusColor="GREY">
                            <padding>
                               <Insets top="30.0" />
                            </padding>
@@ -182,7 +182,7 @@
                         <Insets />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton fx:id="btnCancelar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" prefHeight="30.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #7B3D3F;" text="Cancelar" textFill="WHITE">
+                  <JFXButton fx:id="btnCancelar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#closeButtonAction" prefHeight="30.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #7B3D3F;" text="Cancelar" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

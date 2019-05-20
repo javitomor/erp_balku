@@ -1,8 +1,6 @@
 package com.balku.erp_balku.main;
 
 import com.balku.erp_balku.controller.ModelController;
-import com.balku.erp_balku.model.Cliente;
-import java.util.List;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +24,7 @@ public class MainApp extends Application {
         Scene scene = new Scene(root);
 //        scene.getStylesheets().add("/styles/Styles.css");
         
-        stage.setTitle("JavaFX and Maven");
+        stage.setTitle("Alta de Cliente");
         stage.setScene(scene);
         stage.show();
     }
