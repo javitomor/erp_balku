@@ -8,6 +8,15 @@ package com.balku.erp_balku.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -22,6 +31,21 @@ public class IndexController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+    @FXML
+    private JFXButton btnNuevoCliente;
+
+    @FXML
+    void cargarVentanaNuevoCliente(ActionEvent event) throws IOException {
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/view/cliente/AltaCliente.fxml"));
+        Scene scene = new Scene(root);
+//        scene.getStylesheets().add("/styles/Styles.css");
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Alta de Cliente");
+        stage.setScene(scene);
+        stage.show();
+
+    }
 }

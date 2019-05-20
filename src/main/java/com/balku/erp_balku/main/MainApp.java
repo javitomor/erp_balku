@@ -20,11 +20,11 @@ public class MainApp extends Application {
         
         
         
-        Parent root = FXMLLoader.load(getClass().getResource("/view/cliente/AltaCliente.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/index.fxml"));
         Scene scene = new Scene(root);
 //        scene.getStylesheets().add("/styles/Styles.css");
         
-        stage.setTitle("Alta de Cliente");
+        stage.setTitle("Sistema BALKU");
         stage.setScene(scene);
         stage.show();
     }
