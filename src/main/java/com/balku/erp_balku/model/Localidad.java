@@ -62,6 +62,9 @@ public class Localidad implements Serializable {
     @JoinColumn(name = "provincia_id")
     private Provincia provincia;
 
+    @OneToOne(mappedBy = "localidad", fetch = FetchType.LAZY)
+    private Cliente cliente;
+
     public Localidad() {
     }
 
@@ -108,6 +111,15 @@ public class Localidad implements Serializable {
         this.provincia = provinciaId;
     }
 
+    public Cliente getCliente() {
+
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -130,7 +142,7 @@ public class Localidad implements Serializable {
 
     @Override
     public String toString() {
-        return "com.balku.erp_balku.model.Localidad[ id=" + id + ", nombre= " + nombre + "]"+" Provincia= "+provincia;
+        return nombre;
     }
 
 }

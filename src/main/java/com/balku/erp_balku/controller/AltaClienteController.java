@@ -18,8 +18,6 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 import java.util.List;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
@@ -60,7 +58,7 @@ public class AltaClienteController implements Initializable {
     private JFXComboBox<Provincia> provincia;
 
     @FXML
-    private JFXComboBox<String> localidad;
+    private JFXComboBox<Localidad> localidad;
 
     @FXML
     private JFXDatePicker fechaNacimiento;
@@ -119,6 +117,8 @@ public class AltaClienteController implements Initializable {
         cli.setWhatsapp(this.whatsapp.isSelected());
         cli.setEmail(this.email.getText());
         cli.setEstadoActivo(this.estadoActivo.isSelected());
+        
+        cli.setLocalidad(localidad.getSelectionModel().getSelectedItem());
 
         em.getTransaction().begin();
         em.persist(cli);
@@ -134,7 +134,7 @@ public class AltaClienteController implements Initializable {
         localidad.getItems().remove(0, localidad.getItems().size());
 
         for (Localidad loc : localidades) {
-            localidad.getItems().add(loc.getNombre());
+            localidad.getItems().add(loc);
         }
         
         //AGREGAR ORDER BY O BUSQUEDA DENTRO DEL COMBO

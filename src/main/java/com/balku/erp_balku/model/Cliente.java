@@ -8,11 +8,14 @@ package com.balku.erp_balku.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -25,6 +28,10 @@ public class Cliente implements Serializable{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @OneToOne(cascade = {CascadeType.DETACH})
+    @JoinColumn(name="localidad_id")
+    private Localidad localidad;
     
     @Column
     private String nombre;
@@ -70,6 +77,16 @@ public class Cliente implements Serializable{
         this.id = id;
     }
 
+    
+    public Localidad getLocalidad() {
+        return localidad;
+    }
+
+    public void setLocalidad(Localidad localidad) {
+        this.localidad = localidad;
+    }
+    
+    
     public String getNombre() {
         return nombre;
     }
@@ -170,7 +187,9 @@ public class Cliente implements Serializable{
     public Cliente() {
     }
 
-    public Cliente(String nombre, String apellido, Long dni, LocalDate fechaNacimiento, String sexo, String direccion, String telefono, boolean whatsapp, String email, String usuario, String contrasena, boolean estadoActivo) {
+    public Cliente(String nombre, String apellido, Long dni, LocalDate fechaNacimiento, String sexo, 
+            String direccion, String telefono, boolean whatsapp, String email, String usuario, 
+            String contrasena, boolean estadoActivo, Localidad localidad) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -183,6 +202,7 @@ public class Cliente implements Serializable{
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.estadoActivo = estadoActivo;
+        this.localidad = localidad;
     }
 
     @Override
