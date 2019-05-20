@@ -128,12 +128,12 @@
                               <Insets top="30.0" />
                            </padding>
                         </JFXTextField>
-                        <JFXComboBox fx:id="provincia" editable="true" focusColor="#1b84d1" labelFloat="true" onAction="#cargarLocalidad" prefHeight="47.0" prefWidth="235.0" promptText="Provincia" unFocusColor="GREY">
+                        <JFXComboBox fx:id="provincia" focusColor="#1b84d1" labelFloat="true" onAction="#cargarLocalidad" prefHeight="47.0" prefWidth="235.0" promptText="Provincia" unFocusColor="GREY">
                            <padding>
                               <Insets top="20.0" />
                            </padding>
                         </JFXComboBox>
-                        <JFXComboBox fx:id="localidad" editable="true" focusColor="#1b84d1" labelFloat="true" prefHeight="47.0" prefWidth="246.0" promptText="Localidad" unFocusColor="GREY">
+                        <JFXComboBox fx:id="localidad" disable="true" focusColor="#1b84d1" labelFloat="true" prefHeight="47.0" prefWidth="246.0" promptText="Localidad" unFocusColor="GREY">
                            <padding>
                               <Insets top="30.0" />
                            </padding>

@@ -129,7 +129,8 @@ public class AltaClienteController implements Initializable {
     }
 
     public void cargarLocalidad(ActionEvent envt) {
-
+        localidad.setDisable(true);
+        
         List<Localidad> localidades = provincia.getSelectionModel().getSelectedItem().getLocalidad();
 
         localidad.getItems().remove(0, localidad.getItems().size());
@@ -137,7 +138,8 @@ public class AltaClienteController implements Initializable {
         for (Localidad loc : localidades) {
             localidad.getItems().add(loc);
         }
-
+        
+        localidad.setDisable(false);
         //AGREGAR ORDER BY O BUSQUEDA DENTRO DEL COMBO
     }
 
