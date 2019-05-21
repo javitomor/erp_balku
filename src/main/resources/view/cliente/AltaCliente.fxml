@@ -148,7 +148,7 @@
                                     <Insets right="5.0" />
                                  </padding>
                               </JFXTextField>
-                              <JFXToggleButton fx:id="whatsapp" prefHeight="47.0" prefWidth="84.0" size="7.0" text="WP" toggleColor="#3181c1" toggleLineColor="#40769e">
+                              <JFXToggleButton fx:id="whatsapp" prefHeight="47.0" prefWidth="84.0" selected="true" size="7.0" text="WP" toggleColor="#3181c1" toggleLineColor="#40769e">
                                  <padding>
                                     <Insets top="10.0" />
                                  </padding>

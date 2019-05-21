@@ -121,16 +121,25 @@ public class AltaClienteController implements Initializable {
 
         cli.setLocalidad(localidad.getSelectionModel().getSelectedItem());
 
-        em.getTransaction().begin();
-        em.persist(cli);
-        em.getTransaction().commit();
-        em.close();
+        try {
+            em.getTransaction().begin();
+            em.persist(cli);
+            em.getTransaction().commit();
+            this.limpiarFormulario();
+            System.out.println("Se guardo el cliente con el id: " + cli.getId());
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace();
+
+        } finally {
+            em.close();
+        }
 
     }
 
     public void cargarLocalidad(ActionEvent envt) {
         localidad.setDisable(true);
-        
+
         List<Localidad> localidades = provincia.getSelectionModel().getSelectedItem().getLocalidad();
 
         localidad.getItems().remove(0, localidad.getItems().size());
@@ -138,7 +147,7 @@ public class AltaClienteController implements Initializable {
         for (Localidad loc : localidades) {
             localidad.getItems().add(loc);
         }
-        
+
         localidad.setDisable(false);
         //AGREGAR ORDER BY O BUSQUEDA DENTRO DEL COMBO
     }
@@ -147,4 +156,23 @@ public class AltaClienteController implements Initializable {
         Stage currentStage = (Stage) btnCancelar.getScene().getWindow();
         currentStage.close();
     }
+
+    private void limpiarFormulario() {
+
+        nombre.setText("");
+        apellido.setText("");
+        dni.setText("");
+        provincia.setValue(null);
+        localidad.setValue(null);
+        fechaNacimiento.setValue(null);
+        sexoMasculino.setSelected(false);
+        sexoFemenino.setSelected(false);
+        direccion.setText("");
+        telefono.setText("");
+        whatsapp.setSelected(true);
+        email.setText("");
+        estadoActivo.setSelected(true);
+
+    }
+
 }
