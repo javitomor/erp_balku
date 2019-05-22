@@ -4,13 +4,13 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.balku.erp_balku.controller.IndexController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balku.erp_balku.controller.IndexController">
    <children>
       <JFXButton fx:id="btnNuevoCliente" buttonType="RAISED" layoutX="175.0" layoutY="152.0" onAction="#cargarVentanaNuevoCliente" prefHeight="27.0" prefWidth="150.0" style="-fx-background-color: #1111b5;" text="Nuevo Cliente" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <JFXButton fx:id="btnConsultarCliente" buttonType="RAISED" layoutX="175.0" layoutY="187.0" onAction="#cargarVentanaConsultarCliente" prefHeight="27.0" prefWidth="150.0" style="-fx-background-color: #E37E03;" text="Consultar Cliente" textFill="WHITE" />
    </children>
 </AnchorPane>

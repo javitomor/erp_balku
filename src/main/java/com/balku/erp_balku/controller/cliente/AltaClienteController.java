@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.balku.erp_balku.controller;
+package com.balku.erp_balku.controller.cliente;
 
+import com.balku.erp_balku.controller.ModelController;
 import com.balku.erp_balku.model.Cliente;
 import com.balku.erp_balku.model.Localidad;
 import com.balku.erp_balku.model.Provincia;

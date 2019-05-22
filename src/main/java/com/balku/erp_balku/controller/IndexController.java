@@ -36,16 +36,39 @@ public class IndexController implements Initializable {
     private JFXButton btnNuevoCliente;
 
     @FXML
-    void cargarVentanaNuevoCliente(ActionEvent event) throws IOException {
-        
-        Parent root = FXMLLoader.load(getClass().getResource("/view/cliente/AltaCliente.fxml"));
-        Scene scene = new Scene(root);
-//        scene.getStylesheets().add("/styles/Styles.css");
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Alta de Cliente");
-        stage.setScene(scene);
-        stage.show();
+    private JFXButton btnConsultarCliente;
 
+    @FXML
+    void cargarVentanaConsultarCliente(ActionEvent event) {
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/view/cliente/BuscarCliente.fxml"));
+            Scene scene = new Scene(root);
+//        scene.getStylesheets().add("/styles/Styles.css");
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Buscar Cliente");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    void cargarVentanaNuevoCliente(ActionEvent event) throws IOException {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/view/cliente/AltaCliente.fxml"));
+            Scene scene = new Scene(root);
+//        scene.getStylesheets().add("/styles/Styles.css");
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Alta de Cliente");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

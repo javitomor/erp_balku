@@ -18,13 +18,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="583.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balku.erp_balku.controller.cliente.AltaClienteController">
+<AnchorPane id="AnchorPane" prefHeight="583.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balku.erp_balku.controller.cliente.ConsultaClienteController">
    <children>
       <VBox prefHeight="200.0" prefWidth="545.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0">
                <children>
-                  <ImageView fitHeight="51.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgTitulo" fitHeight="51.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../img/persona2.png" />
                      </image>
@@ -32,12 +32,20 @@
                         <Insets bottom="2.0" left="2.0" top="2.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="NUEVO CLIENTE">
+                  <Text fx:id="lblTitulo" fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="CLIENTE Nº">
                      <font>
                         <Font name="Arial Bold" size="40.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="20.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Text fx:id="txtNumeroCliente" fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="----">
+                     <font>
+                        <Font name="Arial" size="40.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="80.0" />
                      </HBox.margin>
                   </Text>
                </children>
@@ -49,24 +57,24 @@
                <children>
                   <VBox prefHeight="686.0" prefWidth="250.0">
                      <children>
-                        <JFXTextField fx:id="nombre" focusColor="#1b84d1" labelFloat="true" promptText="Nombre" unFocusColor="GREY">
+                        <JFXTextField fx:id="nombre" disable="true" editable="false" focusColor="#1b84d1" labelFloat="true" promptText="Nombre" unFocusColor="GREY">
                            <padding>
                               <Insets top="30.0" />
                            </padding>
                         </JFXTextField>
-                        <JFXTextField fx:id="dni" focusColor="#1b84d1" labelFloat="true" promptText="DNI" unFocusColor="GREY">
+                        <JFXTextField fx:id="dni" disable="true" editable="false" focusColor="#1b84d1" labelFloat="true" promptText="DNI" unFocusColor="GREY">
                            <padding>
                               <Insets top="30.0" />
                            </padding>
                         </JFXTextField>
-                        <JFXDatePicker fx:id="fechaNacimiento" defaultColor="#1b84d1" editable="false" prefHeight="57.0" prefWidth="297.0" promptText="Fecha Nacimiento">
+                        <JFXDatePicker fx:id="fechaNacimiento" defaultColor="#1b84d1" disable="true" editable="false" prefHeight="57.0" prefWidth="297.0" promptText="Fecha Nacimiento">
                            <padding>
                               <Insets top="30.0" />
                            </padding>
                         </JFXDatePicker>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <RadioButton fx:id="sexoMasculino" mnemonicParsing="false">
+                              <RadioButton fx:id="sexoMasculino" disable="true" mnemonicParsing="false">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -81,7 +89,7 @@
                                     </ImageView>
                                  </graphic>
                               </RadioButton>
-                              <RadioButton fx:id="sexoFemenino" mnemonicParsing="false" toggleGroup="$GroupSexo">
+                              <RadioButton fx:id="sexoFemenino" disable="true" mnemonicParsing="false" toggleGroup="$GroupSexo">
                                  <HBox.margin>
                                     <Insets left="80.0" />
                                  </HBox.margin>
@@ -98,7 +106,7 @@
                               <Insets top="20.0" />
                            </padding>
                         </HBox>
-                        <JFXTextField fx:id="direccion" focusColor="#1b84d1" labelFloat="true" promptText="Dirección" unFocusColor="GREY">
+                        <JFXTextField fx:id="direccion" disable="true" editable="false" focusColor="#1b84d1" labelFloat="true" promptText="Dirección" unFocusColor="GREY">
                            <padding>
                               <Insets top="20.0" />
                            </padding>
@@ -108,7 +116,7 @@
                               <Insets top="30.0" />
                            </padding>
                         </JFXTextField>
-                        <JFXToggleButton fx:id="estadoActivo" selected="true" text="Activo" toggleColor="#3181c1" toggleLineColor="#40769e">
+                        <JFXToggleButton fx:id="estadoActivo" disable="true" selected="true" text="Activo" toggleColor="#3181c1" toggleLineColor="#40769e">
                            <padding>
                               <Insets left="100.0" top="40.0" />
                            </padding>
@@ -123,12 +131,12 @@
                         <Insets left="15.0" top="15.0" />
                      </padding>
                      <children>
-                        <JFXTextField fx:id="apellido" focusColor="#1b84d1" labelFloat="true" promptText="Apellido" unFocusColor="GREY">
+                        <JFXTextField fx:id="apellido" disable="true" editable="false" focusColor="#1b84d1" labelFloat="true" promptText="Apellido" unFocusColor="GREY">
                            <padding>
                               <Insets top="30.0" />
                            </padding>
                         </JFXTextField>
-                        <JFXComboBox fx:id="provincia" focusColor="#1b84d1" labelFloat="true" onAction="#cargarLocalidad" prefHeight="47.0" prefWidth="235.0" promptText="Provincia" unFocusColor="GREY">
+                        <JFXComboBox fx:id="provincia" disable="true" focusColor="#1b84d1" labelFloat="true" onAction="#cargarLocalidad" prefHeight="47.0" prefWidth="235.0" promptText="Provincia" unFocusColor="GREY">
                            <padding>
                               <Insets top="20.0" />
                            </padding>
@@ -140,7 +148,7 @@
                         </JFXComboBox>
                         <HBox prefHeight="52.0" prefWidth="235.0">
                            <children>
-                              <JFXTextField fx:id="telefono" focusColor="#1b84d1" labelFloat="true" prefHeight="47.0" prefWidth="196.0" promptText="Teléfono" unFocusColor="GREY">
+                              <JFXTextField fx:id="telefono" disable="true" editable="false" focusColor="#1b84d1" labelFloat="true" prefHeight="47.0" prefWidth="196.0" promptText="Teléfono" unFocusColor="GREY">
                                  <HBox.margin>
                                     <Insets top="30.0" />
                                  </HBox.margin>
@@ -148,14 +156,14 @@
                                     <Insets right="5.0" />
                                  </padding>
                               </JFXTextField>
-                              <JFXToggleButton fx:id="whatsapp" prefHeight="47.0" prefWidth="84.0" selected="true" size="7.0" text="WP" toggleColor="#3181c1" toggleLineColor="#40769e">
+                              <JFXToggleButton fx:id="whatsapp" disable="true" prefHeight="47.0" prefWidth="84.0" selected="true" size="7.0" text="WP" toggleColor="#3181c1" toggleLineColor="#40769e">
                                  <padding>
                                     <Insets top="10.0" />
                                  </padding>
                               </JFXToggleButton>
                            </children>
                         </HBox>
-                        <JFXTextField fx:id="email" focusColor="#1b84d1" labelFloat="true" prefHeight="52.0" promptText="E-mail" unFocusColor="GREY">
+                        <JFXTextField fx:id="email" disable="true" editable="false" focusColor="#1b84d1" labelFloat="true" prefHeight="52.0" promptText="E-mail" unFocusColor="GREY">
                            <padding>
                               <Insets top="30.0" />
                            </padding>
@@ -165,6 +173,26 @@
                               <Insets top="30.0" />
                            </padding>
                         </JFXPasswordField>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <JFXButton fx:id="btnEditar" buttonType="RAISED" onAction="habilitarEditar(false)" prefHeight="30.0" prefWidth="80.0" ripplerFill="WHITE" style="-fx-background-color: #BB932D;" text="Editar" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                              <JFXButton fx:id="btnCancelarEditar" buttonType="RAISED" disable="true" onAction="habilitarEditar(true)" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #7B3D3F;" text="Cancelar" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" top="55.0" />
+                           </padding>
+                        </HBox>
                      </children>
                   </VBox>
                </children>
