@@ -30,7 +30,7 @@ public class BuscarClienteController implements Initializable {
     private JFXButton btnBuscar;
 
     @FXML
-    private JFXButton bntCancelar;
+    private JFXButton btnCancelar;
 
     public void buscarCliente() {
 
@@ -46,6 +46,12 @@ public class BuscarClienteController implements Initializable {
 
     public void mostrarCliente(Cliente cliente) {
         try {
+            
+//            this.btnBuscar.setDisable(true);
+//            this.btnCancelar.setDisable(true);
+//            this.txtNumero.setDisable(true);
+            
+            
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/cliente/ConsultaCliente.fxml"));
             Parent root = (Parent) loader.load();
 
@@ -58,7 +64,7 @@ public class BuscarClienteController implements Initializable {
             stage.setTitle("Cliente Nº "+ cliente.getId().toString()+" - "+cliente.getApellido()+", "+cliente.getNombre());
             stage.setScene(new Scene(root));
 
-            stage.show();
+            stage.showAndWait();
 
         } catch (IOException e) {
             e.printStackTrace();

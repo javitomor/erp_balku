@@ -5,8 +5,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.balku.erp_balku.controller.cliente.BuscarClienteController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balku.erp_balku.controller.cliente.BuscarClienteController">
    <children>
       <JFXTextField fx:id="txtNumero" labelFloat="true" layoutX="52.0" layoutY="44.0" promptText="Numero" />
       <JFXButton fx:id="btnBuscar" buttonType="RAISED" layoutX="52.0" layoutY="95.0" onAction="#buscarCliente" style="-fx-background-color: blue;" text="Buscar" textFill="WHITE">
@@ -14,6 +13,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="bntCancelar" layoutX="130.0" layoutY="95.0" style="-fx-background-color: red;" text="Cancelar" textFill="WHITE" />
+      <JFXButton fx:id="btnCancelar" layoutX="130.0" layoutY="95.0" style="-fx-background-color: red;" text="Cancelar" textFill="WHITE" />
    </children>
 </AnchorPane>

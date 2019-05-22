@@ -38,7 +38,7 @@ public class ConsultaClienteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+
     }
 
     @FXML
@@ -110,9 +110,11 @@ public class ConsultaClienteController implements Initializable {
     @FXML
     private JFXButton btnCancelarEditar;
 
-    public void habilitarEditar(boolean editar) {
+    public void habilitarEditar() {
 
+        boolean editar = false;
         this.btnCancelarEditar.setDisable(editar);
+        this.btnGuardar.setDisable(editar);
         this.nombre.setDisable(editar);
         this.apellido.setDisable(editar);
         this.dni.setDisable(editar);
@@ -130,25 +132,46 @@ public class ConsultaClienteController implements Initializable {
 
     }
 
-    public void cargarLocalidad(ActionEvent event) {
+    public void cancelarEditar() {
+
+        boolean editar = true;
+        this.btnCancelarEditar.setDisable(editar);
+        this.btnGuardar.setDisable(editar);
+        this.nombre.setDisable(editar);
+        this.apellido.setDisable(editar);
+        this.dni.setDisable(editar);
+        this.provincia.setDisable(editar);
+        this.localidad.setDisable(editar);
+        this.fechaNacimiento.setDisable(editar);
+        this.telefono.setDisable(editar);
+        this.whatsapp.setDisable(editar);
+        this.sexoFemenino.setDisable(editar);
+        this.sexoMasculino.setDisable(editar);
+        this.direccion.setDisable(editar);
+        this.email.setDisable(editar);
+        this.btnCancelar.setDisable(!editar);
+        this.btnEditar.setDisable(!editar);
 
     }
 
-    public void closeButtonAction(ActionEvent event) {
+    public void cargarLocalidad() {
+
+    }
+
+    public void closeButtonAction() {
         Stage currentStage = (Stage) btnCancelar.getScene().getWindow();
         currentStage.close();
     }
 
-    public void guardarCliente(MouseEvent event) {
+    public void guardarCliente() {
 
     }
-    
-    
-    public void cargarDatos(Cliente cli){
-    this.nombre.setText(cli.getNombre());
-    this.lblTitulo.setText(cli.getApellido()+", "+cli.getNombre());
-    this.txtNumeroCliente.setText(cli.getId().toString());
-        
+
+    public void cargarDatos(Cliente cli) {
+        this.nombre.setText(cli.getNombre());
+        this.lblTitulo.setText(cli.getApellido() + ", " + cli.getNombre());
+        this.txtNumeroCliente.setText(cli.getId().toString());
+
     }
 
 }
