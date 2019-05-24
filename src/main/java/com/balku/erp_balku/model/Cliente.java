@@ -23,16 +23,17 @@ import javax.persistence.Table;
  * @author javiermoreno
  */
 @Entity
-@Table(name="CLIENTE")
-public class Cliente implements Serializable{
+@Table(name = "CLIENTE")
+public class Cliente implements Serializable {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @ManyToOne(cascade = {CascadeType.DETACH}, fetch = FetchType.EAGER)
-    @JoinColumn(name="localidad_id")
+    @JoinColumn(name = "localidad_id")
     private Localidad localidad;
-    
+
     @Column
     private String nombre;
 
@@ -77,7 +78,6 @@ public class Cliente implements Serializable{
         this.id = id;
     }
 
-    
     public Localidad getLocalidad() {
         return localidad;
     }
@@ -85,8 +85,7 @@ public class Cliente implements Serializable{
     public void setLocalidad(Localidad localidad) {
         this.localidad = localidad;
     }
-    
-    
+
     public String getNombre() {
         return nombre;
     }
@@ -120,11 +119,17 @@ public class Cliente implements Serializable{
     }
 
     public void setSexo(String sexo) {
+        if (sexo == "M") {
+            sexo = "Masculino";
+        } else {
+            sexo = "Femenino";
+        }
+
         this.sexo = sexo;
     }
-    
-    public String getSexo(){
-    
+
+    public String getSexo() {
+
         return sexo;
     }
 
@@ -187,8 +192,8 @@ public class Cliente implements Serializable{
     public Cliente() {
     }
 
-    public Cliente(String nombre, String apellido, Long dni, LocalDate fechaNacimiento, String sexo, 
-            String direccion, String telefono, boolean whatsapp, String email, String usuario, 
+    public Cliente(String nombre, String apellido, Long dni, LocalDate fechaNacimiento, String sexo,
+            String direccion, String telefono, boolean whatsapp, String email, String usuario,
             String contrasena, boolean estadoActivo, Localidad localidad) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -209,6 +214,5 @@ public class Cliente implements Serializable{
     public String toString() {
         return "Cliente{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", fechaNacimiento=" + fechaNacimiento + ", sexo=" + sexo + ", direccion=" + direccion + ", telefono=" + telefono + ", whatsapp=" + whatsapp + ", email=" + email + ", usuario=" + usuario + ", contrasena=" + contrasena + ", estadoActivo=" + estadoActivo + '}';
     }
-     
-    
+
 }

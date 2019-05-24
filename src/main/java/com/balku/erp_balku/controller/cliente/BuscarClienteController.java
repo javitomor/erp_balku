@@ -36,21 +36,16 @@ public class BuscarClienteController implements Initializable {
 
         EntityManager man = ModelController.getEntityManager();
         Cliente cliente = (Cliente) man.find (Cliente.class, (Long.parseLong(txtNumero.getText())));
-        System.out.println(cliente);
-        man.close();
-//        Cliente cliente = new Cliente();
+        //System.out.println(cliente);
         
         mostrarCliente(cliente);
+        
+        man.close();
 
     }
 
     public void mostrarCliente(Cliente cliente) {
         try {
-            
-//            this.btnBuscar.setDisable(true);
-//            this.btnCancelar.setDisable(true);
-//            this.txtNumero.setDisable(true);
-            
             
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/cliente/ConsultaCliente.fxml"));
             Parent root = (Parent) loader.load();

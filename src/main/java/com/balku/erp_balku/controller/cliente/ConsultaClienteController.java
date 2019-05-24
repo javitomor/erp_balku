@@ -5,6 +5,7 @@
  */
 package com.balku.erp_balku.controller.cliente;
 
+import com.balku.erp_balku.controller.ModelController;
 import com.balku.erp_balku.model.Cliente;
 import com.balku.erp_balku.model.Localidad;
 import com.balku.erp_balku.model.Provincia;
@@ -14,10 +15,10 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
-import java.awt.event.MouseEvent;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
@@ -25,6 +26,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javax.persistence.EntityManager;
 
 /**
  * FXML Controller class
@@ -39,6 +41,12 @@ public class ConsultaClienteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        EntityManager man = ModelController.getEntityManager();
+        List<Provincia> provincias = (List<Provincia>) man.createQuery("FROM Provincia").getResultList();
+        for (Provincia prov : provincias) {
+            provincia.getItems().add(prov);
+        }
+        man.close();
     }
 
     @FXML
@@ -129,6 +137,7 @@ public class ConsultaClienteController implements Initializable {
         this.email.setDisable(editar);
         this.btnCancelar.setDisable(!editar);
         this.btnEditar.setDisable(!editar);
+        this.estadoActivo.setDisable(editar);
 
     }
 
@@ -151,11 +160,21 @@ public class ConsultaClienteController implements Initializable {
         this.email.setDisable(editar);
         this.btnCancelar.setDisable(!editar);
         this.btnEditar.setDisable(!editar);
+        this.estadoActivo.setDisable(editar);
 
     }
 
     public void cargarLocalidad() {
+        
+        List<Localidad> localidades = provincia.getSelectionModel().getSelectedItem().getLocalidad();
 
+        localidad.getItems().remove(0, localidad.getItems().size());
+
+        for (Localidad loc : localidades) {
+            localidad.getItems().add(loc);
+        }
+        
+        
     }
 
     public void closeButtonAction() {
@@ -163,14 +182,75 @@ public class ConsultaClienteController implements Initializable {
         currentStage.close();
     }
 
-    public void guardarCliente() {
+    public void updateCliente() {
+        EntityManager em = ModelController.getEntityManager();
 
+        Cliente cli = new Cliente();
+        cli.setNombre(this.nombre.getText());
+        cli.setApellido(this.apellido.getText());
+        cli.setDni(Long.parseLong(this.dni.getText()));
+        cli.setFechaNacimiento(this.fechaNacimiento.getValue());
+
+        RadioButton selectedRadioButton = (RadioButton) this.GroupSexo.getSelectedToggle();
+        cli.setSexo(selectedRadioButton.getText());
+
+        cli.setDireccion(this.direccion.getText());
+        cli.setTelefono(this.telefono.getText());
+        cli.setWhatsapp(this.whatsapp.isSelected());
+        cli.setEmail(this.email.getText());
+        cli.setEstadoActivo(this.estadoActivo.isSelected());
+
+        cli.setLocalidad(localidad.getSelectionModel().getSelectedItem());
+
+        try {
+            em.getTransaction().begin();
+            em.persist(cli);
+            em.getTransaction().commit();
+            this.cancelarEditar();
+            
+            
+            System.out.println("Se guardo el cliente con el id: " + cli.getId());
+            
+            
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace();
+
+        } finally {
+            em.close();
+        }
     }
 
     public void cargarDatos(Cliente cli) {
-        this.nombre.setText(cli.getNombre());
+
         this.lblTitulo.setText(cli.getApellido() + ", " + cli.getNombre());
-        this.txtNumeroCliente.setText(cli.getId().toString());
+        this.txtNumeroCliente.setText("Nº "+cli.getId().toString());
+
+        this.nombre.setText(cli.getNombre());
+        this.apellido.setText(cli.getApellido());
+        this.dni.setText(cli.getDni().toString());
+        this.fechaNacimiento.setValue(cli.getFechaNacimiento());
+
+        if (cli.getSexo() == "Femenino") {
+            this.sexoFemenino.setSelected(true);
+        } else {
+            this.sexoMasculino.setSelected(true);
+        }
+
+        this.direccion.setText(cli.getDireccion());
+        this.email.setText(cli.getEmail());
+        this.telefono.setText(cli.getTelefono());
+
+        this.whatsapp.setSelected(cli.isWhatsapp());
+        this.estadoActivo.setSelected(cli.isEstadoActivo());
+
+        this.usuario.setText(cli.getUsuario());
+        this.contrasena.setText(cli.getContrasena());
+        
+        this.provincia.getSelectionModel().select(cli.getLocalidad().getProvincia());
+        this.cargarLocalidad();
+        
+        this.localidad.getSelectionModel().select(cli.getLocalidad());
 
     }
 

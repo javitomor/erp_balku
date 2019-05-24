@@ -135,7 +135,6 @@ public class AltaClienteController implements Initializable {
         } finally {
             em.close();
         }
-
     }
 
     public void cargarLocalidad(ActionEvent envt) {
@@ -150,7 +149,6 @@ public class AltaClienteController implements Initializable {
         }
 
         localidad.setDisable(false);
-        //AGREGAR ORDER BY O BUSQUEDA DENTRO DEL COMBO
     }
 
     public void closeButtonAction(ActionEvent event) {

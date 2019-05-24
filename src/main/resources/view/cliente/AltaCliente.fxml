@@ -66,7 +66,7 @@
                         </JFXDatePicker>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <RadioButton fx:id="sexoMasculino" mnemonicParsing="false">
+                              <RadioButton fx:id="sexoMasculino" alignment="CENTER_LEFT" mnemonicParsing="false" style="-fx-text-fill: #f1f1f1;" text="M" textOverrun="LEADING_WORD_ELLIPSIS">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -80,10 +80,13 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <font>
+                                    <Font />
+                                 </font>
                               </RadioButton>
-                              <RadioButton fx:id="sexoFemenino" mnemonicParsing="false" toggleGroup="$GroupSexo">
+                              <RadioButton fx:id="sexoFemenino" mnemonicParsing="false" style="-fx-text-fill: #f1f1f1;" text="F" toggleGroup="$GroupSexo">
                                  <HBox.margin>
-                                    <Insets left="80.0" />
+                                    <Insets left="50.0" />
                                  </HBox.margin>
                                  <graphic>
                                     <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
