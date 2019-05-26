@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  *
  * @author javiermoreno
  */
-public class UpdateClienteController implements Initializable{
+public class SimpleClienteController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
