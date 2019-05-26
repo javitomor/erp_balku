@@ -18,7 +18,6 @@ import com.jfoenix.controls.JFXToggleButton;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
@@ -34,6 +33,8 @@ import javax.persistence.EntityManager;
  * @author javiermoreno
  */
 public class ConsultaClienteController implements Initializable {
+
+    public static Cliente cliente = new Cliente();
 
     /**
      * Initializes the controller class.
@@ -164,8 +165,14 @@ public class ConsultaClienteController implements Initializable {
 
     }
 
+    public void setCliente(Cliente cliente) {
+
+        this.cliente = cliente;
+
+    }
+
     public void cargarLocalidad() {
-        
+
         List<Localidad> localidades = provincia.getSelectionModel().getSelectedItem().getLocalidad();
 
         localidad.getItems().remove(0, localidad.getItems().size());
@@ -173,8 +180,7 @@ public class ConsultaClienteController implements Initializable {
         for (Localidad loc : localidades) {
             localidad.getItems().add(loc);
         }
-        
-        
+
     }
 
     public void closeButtonAction() {
@@ -185,7 +191,7 @@ public class ConsultaClienteController implements Initializable {
     public void updateCliente() {
         EntityManager em = ModelController.getEntityManager();
 
-        Cliente cli = new Cliente();
+        Cliente cli = this.cliente;
         cli.setNombre(this.nombre.getText());
         cli.setApellido(this.apellido.getText());
         cli.setDni(Long.parseLong(this.dni.getText()));
@@ -204,14 +210,12 @@ public class ConsultaClienteController implements Initializable {
 
         try {
             em.getTransaction().begin();
-            em.persist(cli);
+            em.merge(cli);
             em.getTransaction().commit();
             this.cancelarEditar();
-            
-            
+
             System.out.println("Se guardo el cliente con el id: " + cli.getId());
-            
-            
+
         } catch (Exception e) {
             em.getTransaction().rollback();
             e.printStackTrace();
@@ -221,10 +225,13 @@ public class ConsultaClienteController implements Initializable {
         }
     }
 
-    public void cargarDatos(Cliente cli) {
+    public void cargarDatos() {
 
+        Cliente cli = this.cliente;
+        
+        
         this.lblTitulo.setText(cli.getApellido() + ", " + cli.getNombre());
-        this.txtNumeroCliente.setText("Nº "+cli.getId().toString());
+        this.txtNumeroCliente.setText("Nº " + cli.getId().toString());
 
         this.nombre.setText(cli.getNombre());
         this.apellido.setText(cli.getApellido());
@@ -246,10 +253,10 @@ public class ConsultaClienteController implements Initializable {
 
         this.usuario.setText(cli.getUsuario());
         this.contrasena.setText(cli.getContrasena());
-        
+
         this.provincia.getSelectionModel().select(cli.getLocalidad().getProvincia());
         this.cargarLocalidad();
-        
+
         this.localidad.getSelectionModel().select(cli.getLocalidad());
 
     }
