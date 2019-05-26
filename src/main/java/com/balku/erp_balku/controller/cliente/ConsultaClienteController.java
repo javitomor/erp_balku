@@ -15,15 +15,20 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 
@@ -166,21 +171,15 @@ public class ConsultaClienteController implements Initializable {
     }
 
     public void setCliente(Cliente cliente) {
-
         this.cliente = cliente;
-
     }
 
     public void cargarLocalidad() {
-
         List<Localidad> localidades = provincia.getSelectionModel().getSelectedItem().getLocalidad();
-
         localidad.getItems().remove(0, localidad.getItems().size());
-
         for (Localidad loc : localidades) {
             localidad.getItems().add(loc);
         }
-
     }
 
     public void closeButtonAction() {
@@ -190,75 +189,85 @@ public class ConsultaClienteController implements Initializable {
 
     public void updateCliente() {
         EntityManager em = ModelController.getEntityManager();
-
-        Cliente cli = this.cliente;
-        cli.setNombre(this.nombre.getText());
-        cli.setApellido(this.apellido.getText());
-        cli.setDni(Long.parseLong(this.dni.getText()));
-        cli.setFechaNacimiento(this.fechaNacimiento.getValue());
+        boolean success = false;
+        this.cliente.setNombre(this.nombre.getText());
+        this.cliente.setApellido(this.apellido.getText());
+        this.cliente.setDni(Long.parseLong(this.dni.getText()));
+        this.cliente.setFechaNacimiento(this.fechaNacimiento.getValue());
 
         RadioButton selectedRadioButton = (RadioButton) this.GroupSexo.getSelectedToggle();
-        cli.setSexo(selectedRadioButton.getText());
+        this.cliente.setSexo(selectedRadioButton.getText());
 
-        cli.setDireccion(this.direccion.getText());
-        cli.setTelefono(this.telefono.getText());
-        cli.setWhatsapp(this.whatsapp.isSelected());
-        cli.setEmail(this.email.getText());
-        cli.setEstadoActivo(this.estadoActivo.isSelected());
+        this.cliente.setDireccion(this.direccion.getText());
+        this.cliente.setTelefono(this.telefono.getText());
+        this.cliente.setWhatsapp(this.whatsapp.isSelected());
+        this.cliente.setEmail(this.email.getText());
+        this.cliente.setEstadoActivo(this.estadoActivo.isSelected());
 
-        cli.setLocalidad(localidad.getSelectionModel().getSelectedItem());
+        this.cliente.setLocalidad(localidad.getSelectionModel().getSelectedItem());
 
         try {
             em.getTransaction().begin();
-            em.merge(cli);
+            em.merge(this.cliente);
             em.getTransaction().commit();
             this.cancelarEditar();
 
-            System.out.println("Se guardo el cliente con el id: " + cli.getId());
+            success = true;
+            System.out.println("Se guardo el cliente con el id: " + this.cliente.getId());
 
         } catch (Exception e) {
             em.getTransaction().rollback();
             e.printStackTrace();
 
         } finally {
+            mostrarMensajeUpdate(success);
             em.close();
         }
     }
 
     public void cargarDatos() {
 
-        Cliente cli = this.cliente;
-        
-        
-        this.lblTitulo.setText(cli.getApellido() + ", " + cli.getNombre());
-        this.txtNumeroCliente.setText("Nº " + cli.getId().toString());
-
-        this.nombre.setText(cli.getNombre());
-        this.apellido.setText(cli.getApellido());
-        this.dni.setText(cli.getDni().toString());
-        this.fechaNacimiento.setValue(cli.getFechaNacimiento());
-
-        if (cli.getSexo() == "Femenino") {
+        this.lblTitulo.setText(this.cliente.getApellido() + ", " + this.cliente.getNombre());
+        this.txtNumeroCliente.setText("Nº " + this.cliente.getId().toString());
+        this.nombre.setText(this.cliente.getNombre());
+        this.apellido.setText(this.cliente.getApellido());
+        this.dni.setText(this.cliente.getDni().toString());
+        this.fechaNacimiento.setValue(this.cliente.getFechaNacimiento());
+        System.out.println(this.cliente.getSexo().toString());
+        if (this.cliente.getSexo().equals(new String("Femenino"))) {
             this.sexoFemenino.setSelected(true);
         } else {
             this.sexoMasculino.setSelected(true);
         }
-
-        this.direccion.setText(cli.getDireccion());
-        this.email.setText(cli.getEmail());
-        this.telefono.setText(cli.getTelefono());
-
-        this.whatsapp.setSelected(cli.isWhatsapp());
-        this.estadoActivo.setSelected(cli.isEstadoActivo());
-
-        this.usuario.setText(cli.getUsuario());
-        this.contrasena.setText(cli.getContrasena());
-
-        this.provincia.getSelectionModel().select(cli.getLocalidad().getProvincia());
+        this.direccion.setText(this.cliente.getDireccion());
+        this.email.setText(this.cliente.getEmail());
+        this.telefono.setText(this.cliente.getTelefono());
+        this.whatsapp.setSelected(this.cliente.isWhatsapp());
+        this.estadoActivo.setSelected(this.cliente.isEstadoActivo());
+        this.usuario.setText(this.cliente.getUsuario());
+        this.contrasena.setText(this.cliente.getContrasena());
+        this.provincia.getSelectionModel().select(this.cliente.getLocalidad().getProvincia());
         this.cargarLocalidad();
-
-        this.localidad.getSelectionModel().select(cli.getLocalidad());
+        this.localidad.getSelectionModel().select(this.cliente.getLocalidad());
 
     }
 
+    public void mostrarMensajeUpdate(boolean success) {
+        try {
+            String view;
+            if (success) {
+                view = "/view/cliente/UpdateClienteSuccess.fxml";
+            } else {
+                view = "/view/cliente/UpdateClienteFail.fxml";
+            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(view));
+            Parent root = (Parent) loader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
