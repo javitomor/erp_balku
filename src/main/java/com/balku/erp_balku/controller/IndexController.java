@@ -6,14 +6,11 @@
 package com.balku.erp_balku.controller;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
 import javafx.fxml.Initializable;
 
 import com.balku.erp_balku.model.Cliente;
@@ -21,8 +18,6 @@ import com.balku.erp_balku.model.ClienteProperty;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 
-import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
