@@ -233,7 +233,6 @@ public class ConsultaClienteController implements Initializable {
         this.apellido.setText(this.cliente.getApellido());
         this.dni.setText(this.cliente.getDni().toString());
         this.fechaNacimiento.setValue(this.cliente.getFechaNacimiento());
-        System.out.println(this.cliente.getSexo().toString());
         if (this.cliente.getSexo().equals(new String("Femenino"))) {
             this.sexoFemenino.setSelected(true);
         } else {

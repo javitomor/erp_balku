@@ -18,6 +18,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  *
  * @author javiermoreno
@@ -38,7 +43,7 @@ public class Cliente implements Serializable {
     private String nombre;
 
     @Column
-    private String apellido;
+    private String  apellido;
 
     @Column
     private Long dni;
@@ -90,15 +95,15 @@ public class Cliente implements Serializable {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(String  nombre) {
         this.nombre = nombre;
     }
 
     public String getApellido() {
         return apellido;
     }
-
-    public void setApellido(String apellido) {
+    
+    public void setApellido(String  apellido) {
         this.apellido = apellido;
     }
 
@@ -113,7 +118,7 @@ public class Cliente implements Serializable {
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
-
+    
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }

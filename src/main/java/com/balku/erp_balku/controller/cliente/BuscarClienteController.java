@@ -38,6 +38,26 @@ public class BuscarClienteController implements Initializable {
     @FXML
     private JFXButton btnCancelar;
 
+    public void desabilitarDni() {
+//        this.txtDni.setDisable(true);
+//        this.txtNumero.setDisable(false);
+    }
+
+    public void habilitarDni() {
+//        this.txtDni.setDisable(false);
+//        this.txtNumero.setDisable(true);
+    }
+
+    public void desabilitarNumero() {
+//        this.txtDni.setDisable(false);
+//        this.txtNumero.setDisable(true);
+    }
+
+    public void habilitarNumero() {
+//        this.txtDni.setDisable(true);
+//        this.txtNumero.setDisable(false);
+    }
+
     public void buscarCliente() {
         EntityManager man = ModelController.getEntityManager();
         List<Cliente> clientes = new ArrayList<>();
@@ -52,7 +72,7 @@ public class BuscarClienteController implements Initializable {
                 clientes = (List<Cliente>) query.getResultList();
             }
         }
-        
+
         Cliente cliente = new Cliente();
         if (!clientes.isEmpty()) {
             for (Cliente cli : clientes) {
