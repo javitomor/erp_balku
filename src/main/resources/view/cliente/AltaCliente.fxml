@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="583.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balku.erp_balku.controller.cliente.AltaClienteController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="545.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0">
+               <children>
+                  <ImageView fitHeight="51.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/persona2.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="2.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="NUEVO CLIENTE">
+                     <font>
+                        <Font name="Arial Bold" size="40.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets left="20.0" top="15.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="676.0">
+               <children>
+                  <VBox prefHeight="686.0" prefWidth="250.0">
+                     <children>
+                        <JFXTextField fx:id="nombre" focusColor="#1b84d1" labelFloat="true" promptText="Nombre" unFocusColor="GREY">
+                           <padding>
+                              <Insets top="30.0" />
+                           </padding>
+                        </JFXTextField>
+                        <JFXTextField fx:id="dni" focusColor="#1b84d1" labelFloat="true" promptText="DNI" unFocusColor="GREY">
+                           <padding>
+                              <Insets top="30.0" />
+                           </padding>
+                        </JFXTextField>
+                        <JFXDatePicker fx:id="fechaNacimiento" defaultColor="#1b84d1" editable="false" prefHeight="57.0" prefWidth="297.0" promptText="Fecha Nacimiento">
+                           <padding>
+                              <Insets top="30.0" />
+                           </padding>
+                        </JFXDatePicker>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <RadioButton fx:id="sexoMasculino" alignment="CENTER_LEFT" mnemonicParsing="false" style="-fx-text-fill: #f1f1f1;" text="M" textOverrun="LEADING_WORD_ELLIPSIS">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="GroupSexo" />
+                                 </toggleGroup>
+                                 <graphic>
+                                    <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/Man-icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font />
+                                 </font>
+                              </RadioButton>
+                              <RadioButton fx:id="sexoFemenino" mnemonicParsing="false" style="-fx-text-fill: #f1f1f1;" text="F" toggleGroup="$GroupSexo">
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../img/Woman-icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </RadioButton>
+                           </children>
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                        </HBox>
+                        <JFXTextField fx:id="direccion" focusColor="#1b84d1" labelFloat="true" promptText="Dirección" unFocusColor="GREY">
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                        </JFXTextField>
+                        <JFXTextField fx:id="usuario" disable="true" focusColor="#1b84d1" labelFloat="true" promptText="Usuario" unFocusColor="GREY">
+                           <padding>
+                              <Insets top="30.0" />
+                           </padding>
+                        </JFXTextField>
+                        <JFXToggleButton fx:id="estadoActivo" selected="true" text="Activo" toggleColor="#3181c1" toggleLineColor="#40769e">
+                           <padding>
+                              <Insets left="100.0" top="40.0" />
+                           </padding>
+                        </JFXToggleButton>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" right="15.0" top="15.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="676.0" prefWidth="250.0">
+                     <padding>
+                        <Insets left="15.0" top="15.0" />
+                     </padding>
+                     <children>
+                        <JFXTextField fx:id="apellido" focusColor="#1b84d1" labelFloat="true" promptText="Apellido" unFocusColor="GREY">
+                           <padding>
+                              <Insets top="30.0" />
+                           </padding>
+                        </JFXTextField>
+                        <JFXComboBox fx:id="provincia" focusColor="#1b84d1" labelFloat="true" onAction="#cargarLocalidad" prefHeight="47.0" prefWidth="235.0" promptText="Provincia" unFocusColor="GREY">
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                        </JFXComboBox>
+                        <JFXComboBox fx:id="localidad" disable="true" focusColor="#1b84d1" labelFloat="true" prefHeight="47.0" prefWidth="246.0" promptText="Localidad" unFocusColor="GREY">
+                           <padding>
+                              <Insets top="30.0" />
+                           </padding>
+                        </JFXComboBox>
+                        <HBox prefHeight="52.0" prefWidth="235.0">
+                           <children>
+                              <JFXTextField fx:id="telefono" focusColor="#1b84d1" labelFloat="true" prefHeight="47.0" prefWidth="196.0" promptText="Teléfono" unFocusColor="GREY">
+                                 <HBox.margin>
+                                    <Insets top="30.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets right="5.0" />
+                                 </padding>
+                              </JFXTextField>
+                              <JFXToggleButton fx:id="whatsapp" prefHeight="47.0" prefWidth="84.0" selected="true" size="7.0" text="WP" toggleColor="#3181c1" toggleLineColor="#40769e">
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </JFXToggleButton>
+                           </children>
+                        </HBox>
+                        <JFXTextField fx:id="email" focusColor="#1b84d1" labelFloat="true" prefHeight="52.0" promptText="E-mail" unFocusColor="GREY">
+                           <padding>
+                              <Insets top="30.0" />
+                           </padding>
+                        </JFXTextField>
+                        <JFXPasswordField fx:id="contrasena" disable="true" focusColor="#1b84d1" labelFloat="true" promptText="Password">
+                           <padding>
+                              <Insets top="30.0" />
+                           </padding>
+                        </JFXPasswordField>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXButton fx:id="btnGuardar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" defaultButton="true" onMouseClicked="#guardarCliente" prefHeight="30.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #405A44;" text="Guardar" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Apple Color Emoji" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCancelar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#closeButtonAction" prefHeight="30.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #7B3D3F;" text="Cancelar" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="40.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets top="55.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

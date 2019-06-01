@@ -77,6 +77,7 @@
                   </VBox>
                </children>
             </HBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" />
          </children>
       </VBox>
    </center>

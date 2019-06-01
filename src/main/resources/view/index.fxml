@@ -1,11 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balku.erp_balku.controller.IndexController">
-    
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balku.erp_balku.controller.IndexController">
+   <children>
+      <AnchorPane fx:id="indexAnchorPane" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <VBox prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <JFXTabPane prefHeight="412.0" prefWidth="600.0">
+                     <tabs>
+                        <Tab closable="false" text="Clientes">
+                          <content>
+                            <AnchorPane fx:id="clienteAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="349.0" prefWidth="580.0">
+                                       <children>
+                                          <TableView fx:id="tableViewCliente" prefHeight="395.0" prefWidth="580.0">
+                                            <columns>
+                                              <TableColumn fx:id="tabColId" editable="false" prefWidth="75.0" text="Id" />
+                                              <TableColumn fx:id="tabColNombre" editable="false" prefWidth="87.0" text="Nombre" />
+                                                <TableColumn fx:id="tabColApellido" editable="false" prefWidth="137.0" text="Apellido" />
+                                                <TableColumn fx:id="tabColDni" editable="false" prefWidth="110.0" text="DNI" />
+<!--                                                 <TableColumn fx:id="tabColOpciones" editable="false" prefWidth="170.0" text="Opciones" /> -->
+                                            </columns>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </TableView>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="579.0">
+                                             <children>
+                                                <JFXButton fx:id="btnNuevoCliente" buttonType="RAISED" onAction="#cargarVentanaNuevoCliente" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #1111b5;" text="Nuevo" textFill="WHITE">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </JFXButton>
+                                                <JFXButton fx:id="btnConsultarCliente" buttonType="RAISED" onAction="#cargarVentanaConsultarCliente" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #E37E03;" text="Consultar" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                </JFXButton>
+                                             </children>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab closable="false" text="Ordenes">
+                          <content>
+                            <AnchorPane fx:id="ordenesAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </content>
+                        </Tab>
+                     </tabs>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </JFXTabPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

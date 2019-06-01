@@ -1,27 +1,40 @@
-package com.balku.erp_balku;
+package com.balku.erp_balku.main;
 
+import com.balku.erp_balku.controller.ModelController;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javax.persistence.EntityManager;
 
 
 public class MainApp extends Application {
 
+    private static EntityManager manager;
+            
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
+
         
+        
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/view/index.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
+//        scene.getStylesheets().add("/styles/Styles.css");
         
-        stage.setTitle("JavaFX and Maven");
+        stage.setTitle("Sistema BALKU");
         stage.setScene(scene);
         stage.show();
     }
 
+    @Override
+    public void init(){
+    
+        manager = ModelController.getEntityManager();
+        
+    }
     /**
      * The main() method is ignored in correctly deployed JavaFX application.
      * main() serves only as fallback in case the application can not be

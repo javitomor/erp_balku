@@ -1,4 +1,4 @@
-package com.balku.erp_balku;
+package com.balku.erp_balku.main;
 
 import java.net.URL;
 import java.util.ResourceBundle;

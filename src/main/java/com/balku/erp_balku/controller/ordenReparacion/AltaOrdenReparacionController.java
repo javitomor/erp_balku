@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.balku.erp_balku.controller;
+package com.balku.erp_balku.controller.ordenReparacion;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author javiermoreno
  */
-public class IndexOrdenReparacionController implements Initializable {
+public class AltaOrdenReparacionController implements Initializable {
 
     /**
      * Initializes the controller class.
