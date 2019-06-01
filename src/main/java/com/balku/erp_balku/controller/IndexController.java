@@ -14,7 +14,7 @@ import javax.persistence.EntityManager;
 import javafx.fxml.Initializable;
 
 import com.balku.erp_balku.model.Cliente;
-import com.balku.erp_balku.model.ClienteProperty;
+import com.balku.erp_balku.model.propertyObject.ClienteProperty;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 

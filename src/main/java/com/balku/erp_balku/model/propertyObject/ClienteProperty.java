@@ -1,4 +1,4 @@
-package com.balku.erp_balku.model;
+package com.balku.erp_balku.model.propertyObject;
 
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
