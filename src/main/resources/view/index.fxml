@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balku.erp_balku.controller.IndexController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balku.erp_balku.controller.IndexController">
    <children>
       <AnchorPane fx:id="indexAnchorPane" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -42,15 +41,35 @@
                                           </TableView>
                                           <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="579.0">
                                              <children>
-                                                <JFXButton fx:id="btnNuevoCliente" buttonType="RAISED" onAction="#cargarVentanaNuevoCliente" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #1111b5;" text="Nuevo" textFill="WHITE">
+                                                <JFXButton fx:id="btnNuevoCliente" buttonType="RAISED" onAction="#cargarVentanaNuevoCliente" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #F4841D;" text=" " textFill="WHITE">
                                                    <cursor>
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
+                                                   <graphic>
+                                                      <ImageView fitHeight="39.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../img/add-client-icon.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
                                                 </JFXButton>
-                                                <JFXButton fx:id="btnConsultarCliente" buttonType="RAISED" onAction="#cargarVentanaConsultarCliente" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #E37E03;" text="Consultar" textFill="WHITE">
+                                                <JFXButton fx:id="btnConsultarCliente" buttonType="RAISED" onAction="#cargarVentanaConsultarCliente" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #61A7BF;" text=" " textFill="WHITE">
                                                    <HBox.margin>
                                                       <Insets left="10.0" />
                                                    </HBox.margin>
+                                                   <graphic>
+                                                      <ImageView fitHeight="39.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../img/profile-client-icon.png" />
+                                                         </image>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </JFXButton>
                                              </children>
                                              <padding>
@@ -65,7 +84,65 @@
                         </Tab>
                         <Tab closable="false" text="Ordenes">
                           <content>
-                            <AnchorPane fx:id="ordenesAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                            <AnchorPane fx:id="ordenesAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox prefHeight="350.0" prefWidth="581.0">
+                                       <children>
+                                          <TableView prefHeight="395.0" prefWidth="580.0">
+                                            <columns>
+                                              <TableColumn prefWidth="83.0" text="Nro Orden" />
+                                                <TableColumn prefWidth="110.0" text="Recibido" />
+                                              <TableColumn prefWidth="134.0" text="Cliente" />
+                                                <TableColumn prefWidth="158.0" text="Equipo" />
+                                                <TableColumn editable="false" prefWidth="95.0" text="Presupuesto" />
+                                            </columns>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </TableView>
+                                          <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="579.0">
+                                             <children>
+                                                <JFXButton buttonType="RAISED" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #F4841D;" text=" ">
+                                                   <graphic>
+                                                      <ImageView fitHeight="39.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../img/add-file-icon.png" />
+                                                         </image>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </JFXButton>
+                                                <JFXButton buttonType="RAISED" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #61A7BF;" text=" ">
+                                                   <graphic>
+                                                      <ImageView fitHeight="39.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../img/find-file-icon.png" />
+                                                         </image>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </JFXButton>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children></AnchorPane>
                           </content>
                         </Tab>
                      </tabs>

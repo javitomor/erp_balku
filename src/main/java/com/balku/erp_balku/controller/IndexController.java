@@ -139,5 +139,12 @@ public class IndexController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	public void cargarVentanaNuevaOrdenReparacion() {
+		
+	}
+	
+	public void cargarVentanaConsultarOrdenReparacion() {}
+	
 
 }

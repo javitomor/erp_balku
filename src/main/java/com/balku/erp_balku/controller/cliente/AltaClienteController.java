@@ -25,6 +25,9 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javax.persistence.EntityManager;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
 
 /**
  * FXML Controller class
@@ -100,6 +103,9 @@ public class AltaClienteController implements Initializable {
 
     @FXML
     private JFXButton btnCancelar;
+    
+    
+    List<Localidad> localidades = provincia.getSelectionModel().getSelectedItem().getLocalidad();
 
     public void guardarCliente() {
 
@@ -140,8 +146,11 @@ public class AltaClienteController implements Initializable {
     public void cargarLocalidad(ActionEvent envt) {
         localidad.setDisable(true);
 
-        List<Localidad> localidades = provincia.getSelectionModel().getSelectedItem().getLocalidad();
+        
 
+        List<Localidad> localidades = provincia.getSelectionModel().getSelectedItem().getLocalidad();
+        
+        
         localidad.getItems().remove(0, localidad.getItems().size());
 
         for (Localidad loc : localidades) {
@@ -149,6 +158,10 @@ public class AltaClienteController implements Initializable {
         }
 
         localidad.setDisable(false);
+    }
+    
+    public void buscarLocalidad() {
+    	
     }
 
     public void closeButtonAction(ActionEvent event) {
