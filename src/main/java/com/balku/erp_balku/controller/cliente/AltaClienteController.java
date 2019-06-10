@@ -25,9 +25,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javax.persistence.EntityManager;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-
 
 /**
  * FXML Controller class
@@ -36,155 +33,150 @@ import javax.swing.JTextField;
  */
 public class AltaClienteController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+	/**
+	 * Initializes the controller class.
+	 */
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
 
-        EntityManager man = ModelController.getEntityManager();
-        List<Provincia> provincias = (List<Provincia>) man.createQuery("FROM Provincia").getResultList();
-        for (Provincia prov : provincias) {
-            provincia.getItems().add(prov);
-        }
-        man.close();
-    }
+		EntityManager man = ModelController.getEntityManager();
+		List<Provincia> provincias = (List<Provincia>) man.createQuery("FROM Provincia").getResultList();
+		for (Provincia prov : provincias) {
+			provincia.getItems().add(prov);
+		}
+		man.close();
+	}
 
-    @FXML
-    private JFXTextField nombre;
+	@FXML
+	private JFXTextField nombre;
 
-    @FXML
-    private JFXTextField apellido;
+	@FXML
+	private JFXTextField apellido;
 
-    @FXML
-    private JFXTextField dni;
+	@FXML
+	private JFXTextField dni;
 
-    @FXML
-    private JFXComboBox<Provincia> provincia;
+	@FXML
+	private JFXComboBox<Provincia> provincia;
 
-    @FXML
-    private JFXComboBox<Localidad> localidad;
+	@FXML
+	private JFXComboBox<Localidad> localidad;
 
-    @FXML
-    private JFXDatePicker fechaNacimiento;
+	@FXML
+	private JFXDatePicker fechaNacimiento;
 
-    @FXML
-    private RadioButton sexoMasculino;
+	@FXML
+	private RadioButton sexoMasculino;
 
-    @FXML
-    private ToggleGroup GroupSexo;
+	@FXML
+	private ToggleGroup GroupSexo;
 
-    @FXML
-    private RadioButton sexoFemenino;
+	@FXML
+	private RadioButton sexoFemenino;
 
-    @FXML
-    private JFXTextField direccion;
+	@FXML
+	private JFXTextField direccion;
 
-    @FXML
-    private JFXTextField telefono;
+	@FXML
+	private JFXTextField telefono;
 
-    @FXML
-    private JFXToggleButton whatsapp;
+	@FXML
+	private JFXToggleButton whatsapp;
 
-    @FXML
-    private JFXTextField email;
+	@FXML
+	private JFXTextField email;
 
-    @FXML
-    private JFXTextField usuario;
+	@FXML
+	private JFXTextField usuario;
 
-    @FXML
-    private JFXPasswordField contrasena;
+	@FXML
+	private JFXPasswordField contrasena;
 
-    @FXML
-    private JFXToggleButton estadoActivo;
+	@FXML
+	private JFXToggleButton estadoActivo;
 
-    @FXML
-    private JFXButton btnGuardar;
+	@FXML
+	private JFXButton btnGuardar;
 
-    @FXML
-    private JFXButton btnCancelar;
-    
-    
-    List<Localidad> localidades = provincia.getSelectionModel().getSelectedItem().getLocalidad();
+	@FXML
+	private JFXButton btnCancelar;
 
-    public void guardarCliente() {
+	public void guardarCliente() {
 
-        EntityManager em = ModelController.getEntityManager();
+		EntityManager em = ModelController.getEntityManager();
 
-        Cliente cli = new Cliente();
-        cli.setNombre(this.nombre.getText());
-        cli.setApellido(this.apellido.getText());
-        cli.setDni(Long.parseLong(this.dni.getText()));
-        cli.setFechaNacimiento(this.fechaNacimiento.getValue());
+		Cliente cli = new Cliente();
+		cli.setNombre(this.nombre.getText());
+		cli.setApellido(this.apellido.getText());
+		cli.setDni(Long.parseLong(this.dni.getText()));
+		cli.setFechaNacimiento(this.fechaNacimiento.getValue());
 
-        RadioButton selectedRadioButton = (RadioButton) this.GroupSexo.getSelectedToggle();
-        cli.setSexo(selectedRadioButton.getText());
+		RadioButton selectedRadioButton = (RadioButton) this.GroupSexo.getSelectedToggle();
+		cli.setSexo(selectedRadioButton.getText());
 
-        cli.setDireccion(this.direccion.getText());
-        cli.setTelefono(this.telefono.getText());
-        cli.setWhatsapp(this.whatsapp.isSelected());
-        cli.setEmail(this.email.getText());
-        cli.setEstadoActivo(this.estadoActivo.isSelected());
+		cli.setDireccion(this.direccion.getText());
+		cli.setTelefono(this.telefono.getText());
+		cli.setWhatsapp(this.whatsapp.isSelected());
+		cli.setEmail(this.email.getText());
+		cli.setEstadoActivo(this.estadoActivo.isSelected());
 
-        cli.setLocalidad(localidad.getSelectionModel().getSelectedItem());
+		cli.setLocalidad(localidad.getSelectionModel().getSelectedItem());
 
-        try {
-            em.getTransaction().begin();
-            em.persist(cli);
-            em.getTransaction().commit();
-            this.limpiarFormulario();
-            System.out.println("Se guardo el cliente con el id: " + cli.getId());
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-            e.printStackTrace();
+		try {
+			em.getTransaction().begin();
+			em.persist(cli);
+			em.getTransaction().commit();
+			this.limpiarFormulario();
+			System.out.println("Se guardo el cliente con el id: " + cli.getId());
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+			e.printStackTrace();
 
-        } finally {
-            em.close();
-        }
-    }
+		} finally {
+			em.close();
+		}
+	}
 
-    public void cargarLocalidad(ActionEvent envt) {
-        localidad.setDisable(true);
+	public void cargarLocalidad(ActionEvent envt) {
 
-        
+		localidad.setDisable(true);
 
-        List<Localidad> localidades = provincia.getSelectionModel().getSelectedItem().getLocalidad();
-        
-        
-        localidad.getItems().remove(0, localidad.getItems().size());
+		List<Localidad> localidades = provincia.getSelectionModel().getSelectedItem().getLocalidad();
 
-        for (Localidad loc : localidades) {
-            localidad.getItems().add(loc);
-        }
+		localidad.getItems().remove(0, localidad.getItems().size());
 
-        localidad.setDisable(false);
-    }
-    
-    public void buscarLocalidad() {
-    	
-    }
+		for (Localidad loc : localidades) {
+			localidad.getItems().add(loc);
+		}
 
-    public void closeButtonAction(ActionEvent event) {
-        Stage currentStage = (Stage) btnCancelar.getScene().getWindow();
-        currentStage.close();
-    }
+		localidad.setDisable(false);
+	}
 
-    private void limpiarFormulario() {
+	public void buscarLocalidad() {
 
-        nombre.setText("");
-        apellido.setText("");
-        dni.setText("");
-        provincia.setValue(null);
-        localidad.setValue(null);
-        fechaNacimiento.setValue(null);
-        sexoMasculino.setSelected(false);
-        sexoFemenino.setSelected(false);
-        direccion.setText("");
-        telefono.setText("");
-        whatsapp.setSelected(true);
-        email.setText("");
-        estadoActivo.setSelected(true);
+	}
 
-    }
+	public void closeButtonAction(ActionEvent event) {
+		Stage currentStage = (Stage) btnCancelar.getScene().getWindow();
+		currentStage.close();
+	}
+
+	private void limpiarFormulario() {
+
+		nombre.setText("");
+		apellido.setText("");
+		dni.setText("");
+		provincia.setValue(null);
+		localidad.setValue(null);
+		fechaNacimiento.setValue(null);
+		sexoMasculino.setSelected(false);
+		sexoFemenino.setSelected(false);
+		direccion.setText("");
+		telefono.setText("");
+		whatsapp.setSelected(true);
+		email.setText("");
+		estadoActivo.setSelected(true);
+
+	}
 
 }

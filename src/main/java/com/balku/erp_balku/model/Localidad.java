@@ -18,7 +18,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -48,6 +47,7 @@ public class Localidad implements Serializable {
     @Column(name = "id", nullable = false)
 
     private Long id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
@@ -74,7 +74,7 @@ public class Localidad implements Serializable {
         this.id = id;
     }
 
-    public Localidad(Long id, String nombre, int cp, Provincia provinciaId) {
+    public Localidad(Long id, String nombre, int cp, Provincia provincia) {
         this.id = id;
         this.nombre = nombre;
         this.cp = cp;
