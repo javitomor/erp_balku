@@ -83,6 +83,12 @@ public class IndexController implements Initializable {
 	@FXML
 	private TableColumn<ClienteProperty, String> tabColDni;
 
+    @FXML
+    private JFXButton bntNuevaOrdenReparacion;
+
+    @FXML
+    private JFXButton btnConsultarOrdenReparacion;
+
 	@FXML
 
 	public void cargarVentanaConsultarCliente() {
@@ -111,7 +117,7 @@ public class IndexController implements Initializable {
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.setTitle("Alta de Cliente");
 			stage.setScene(scene);
-			stage.show();
+			stage.showAndWait();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -124,9 +130,9 @@ public class IndexController implements Initializable {
 		tabColApellido.setCellValueFactory(new PropertyValueFactory<>("Apellido"));
 		tabColDni.setCellValueFactory(new PropertyValueFactory<>("Dni"));
 		tableViewCliente.setItems(dataCliente);
-		
+
 		try {
-		
+
 			EntityManager man = ModelController.getEntityManager();
 			List<Cliente> clientes = new ArrayList<>();
 			clientes = man.createQuery("FROM Cliente").getResultList();
@@ -134,17 +140,27 @@ public class IndexController implements Initializable {
 			for (Cliente cli : clientes) {
 				dataCliente.add(new ClienteProperty(cli.getId(), cli.getNombre(), cli.getApellido(), cli.getDni()));
 			}
-		
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void cargarVentanaNuevaOrdenReparacion() {
-		
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("/view/ordenReparacion/AltaOrdenReparacion.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setTitle("Alta Orden Reparación");
+			stage.setScene(scene);
+			stage.showAndWait();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	
-	public void cargarVentanaConsultarOrdenReparacion() {}
-	
+
+	public void cargarVentanaConsultarOrdenReparacion() {
+	}
 
 }

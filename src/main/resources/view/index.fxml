@@ -102,7 +102,7 @@
                                           </TableView>
                                           <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="579.0">
                                              <children>
-                                                <JFXButton buttonType="RAISED" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #F4841D;" text=" ">
+                                                <JFXButton fx:id="bntNuevaOrdenReparacion" buttonType="RAISED" onAction="#cargarVentanaNuevaOrdenReparacion" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #F4841D;" text=" ">
                                                    <graphic>
                                                       <ImageView fitHeight="39.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -117,7 +117,7 @@
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </JFXButton>
-                                                <JFXButton buttonType="RAISED" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #61A7BF;" text=" ">
+                                                <JFXButton fx:id="btnConsultarOrdenReparacion" buttonType="RAISED" onAction="#cargarVentanaConsultarOrdenReparacion" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #61A7BF;" text=" ">
                                                    <graphic>
                                                       <ImageView fitHeight="39.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
