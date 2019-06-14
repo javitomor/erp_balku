@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.balku.erp_balku.controller.cliente.BuscarClienteController;
+import com.balku.erp_balku.model.Cliente;
+import com.balku.erp_balku.model.propertyObject.ClienteProperty;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
@@ -33,7 +35,7 @@ public class AltaOrdenReparacionController implements Initializable {
 		// TODO
 	}
 
-	public final String cliente_id = new String();
+	public static final Cliente cliente = new Cliente();
 
 	@FXML
 	private JFXButton btnBuscarCliente;
@@ -97,6 +99,13 @@ public class AltaOrdenReparacionController implements Initializable {
 		BuscarClienteController busCliCont = new BuscarClienteController();
 		busCliCont.mostrarListadoClistes();
 
+	}
+	
+	public static void setClienteFromOut(ClienteProperty clienteProperty) {
+		cliente.setId(clienteProperty.getId());
+		cliente.setDni(clienteProperty.getDni());
+		cliente.setNombre(clienteProperty.getNombre());
+		cliente.setApellido(clienteProperty.getApellido());
 	}
 
 }

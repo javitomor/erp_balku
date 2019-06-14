@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import javax.persistence.EntityManager;
 
 import com.balku.erp_balku.controller.ModelController;
+import com.balku.erp_balku.controller.ordenReparacion.AltaOrdenReparacionController;
 import com.balku.erp_balku.model.Cliente;
 import com.balku.erp_balku.model.propertyObject.ClienteProperty;
 import com.jfoenix.controls.JFXButton;
@@ -19,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 public class ElegirClienteListaController implements Initializable{
 
@@ -72,6 +74,19 @@ public class ElegirClienteListaController implements Initializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void seleccionarCliente() {
+		ClienteProperty cliente = tblClientes.getSelectionModel().getSelectedItem();
+		AltaOrdenReparacionController.setClienteFromOut(cliente);
+		
+		Stage currentStage = (Stage) btnCargar.getScene().getWindow();
+		currentStage.close();
+	}
+	
+	public void closeButtonAction() {
+		Stage currentStage = (Stage) bntCancelar.getScene().getWindow();
+		currentStage.close();
 	}
 
 }
