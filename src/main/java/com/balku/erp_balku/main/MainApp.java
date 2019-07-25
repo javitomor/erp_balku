@@ -1,6 +1,9 @@
 package com.balku.erp_balku.main;
 
 import com.balku.erp_balku.controller.ModelController;
+//import com.balku.erp_balku.controller.ViewController;
+import javafx.scene.Group;
+
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -12,27 +15,23 @@ import javax.persistence.EntityManager;
 
 public class MainApp extends Application {
 
-    private static EntityManager manager;
-            
     @Override
     public void start(Stage stage) throws Exception {
-
-        
-        
         
         Parent root = FXMLLoader.load(getClass().getResource("/view/index.fxml"));
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,800,800);
 //        scene.getStylesheets().add("/styles/Styles.css");
-        
         stage.setTitle("Sistema BALKU");
-        stage.setScene(scene);
+        stage.setScene(scene);  
+        stage.sizeToScene();
         stage.show();
+        
     }
 
     @Override
     public void init(){
     
-        manager = ModelController.getEntityManager();
+//        manager = ModelController.getEntityManager();
         
     }
     /**

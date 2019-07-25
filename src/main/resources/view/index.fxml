@@ -13,21 +13,21 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balku.erp_balku.controller.IndexController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.balku.erp_balku.controller.IndexController">
    <children>
-      <AnchorPane fx:id="indexAnchorPane" prefHeight="400.0" prefWidth="600.0">
+      <AnchorPane fx:id="indexAnchorPane">
          <children>
-            <VBox prefHeight="400.0" prefWidth="600.0">
+            <VBox>
                <children>
-                  <JFXTabPane prefHeight="412.0" prefWidth="600.0">
+                  <JFXTabPane>
                      <tabs>
                         <Tab closable="false" text="Clientes">
                           <content>
-                            <AnchorPane fx:id="clienteAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <AnchorPane fx:id="clienteAnchorPane">
                                  <children>
-                                    <VBox alignment="CENTER" prefHeight="349.0" prefWidth="580.0">
+                                    <VBox alignment="CENTER">
                                        <children>
-                                          <TableView fx:id="tableViewCliente" prefHeight="395.0" prefWidth="580.0">
+                                          <TableView fx:id="tableViewCliente">
                                             <columns>
                                               <TableColumn fx:id="tabColId" editable="false" prefWidth="75.0" text="Id" />
                                               <TableColumn fx:id="tabColNombre" editable="false" prefWidth="87.0" text="Nombre" />
@@ -39,9 +39,9 @@
                                                 <Insets top="5.0" />
                                              </VBox.margin>
                                           </TableView>
-                                          <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="579.0">
+                                          <HBox alignment="CENTER_RIGHT">
                                              <children>
-                                                <JFXButton fx:id="btnNuevoCliente" buttonType="RAISED" onAction="#cargarVentanaNuevoCliente" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #F4841D;" text=" " textFill="WHITE">
+                                                <JFXButton fx:id="btnNuevoCliente" buttonType="RAISED" onAction="#cargarVentanaNuevoCliente" style="-fx-background-color: #F4841D;" text=" " textFill="WHITE">
                                                    <cursor>
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
@@ -53,7 +53,7 @@
                                                       </ImageView>
                                                    </graphic>
                                                 </JFXButton>
-                                                <JFXButton fx:id="btnConsultarCliente" buttonType="RAISED" onAction="#cargarVentanaConsultarCliente" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #61A7BF;" text=" " textFill="WHITE">
+                                                <JFXButton fx:id="btnConsultarCliente" buttonType="RAISED" onAction="#cargarVentanaConsultarCliente" style="-fx-background-color: #61A7BF;" text=" " textFill="WHITE">
                                                    <HBox.margin>
                                                       <Insets left="10.0" />
                                                    </HBox.margin>
@@ -84,11 +84,11 @@
                         </Tab>
                         <Tab closable="false" text="Ordenes">
                           <content>
-                            <AnchorPane fx:id="ordenesAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <AnchorPane fx:id="ordenesAnchorPane">
                                  <children>
-                                    <VBox prefHeight="350.0" prefWidth="581.0">
+                                    <VBox>
                                        <children>
-                                          <TableView prefHeight="395.0" prefWidth="580.0">
+                                          <TableView>
                                             <columns>
                                               <TableColumn prefWidth="83.0" text="Nro Orden" />
                                                 <TableColumn prefWidth="110.0" text="Recibido" />
@@ -100,9 +100,9 @@
                                                 <Insets top="5.0" />
                                              </VBox.margin>
                                           </TableView>
-                                          <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="579.0">
+                                          <HBox alignment="CENTER_RIGHT">
                                              <children>
-                                                <JFXButton fx:id="bntNuevaOrdenReparacion" buttonType="RAISED" onAction="#cargarVentanaNuevaOrdenReparacion" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #F4841D;" text=" ">
+                                                <JFXButton fx:id="bntNuevaOrdenReparacion" buttonType="RAISED" onAction="#cargarVentanaNuevaOrdenReparacion" style="-fx-background-color: #F4841D;" text=" ">
                                                    <graphic>
                                                       <ImageView fitHeight="39.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -117,7 +117,7 @@
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </JFXButton>
-                                                <JFXButton fx:id="btnConsultarOrdenReparacion" buttonType="RAISED" onAction="#cargarVentanaConsultarOrdenReparacion" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #61A7BF;" text=" ">
+                                                <JFXButton fx:id="btnConsultarOrdenReparacion" buttonType="RAISED" onAction="#cargarVentanaConsultarOrdenReparacion" style="-fx-background-color: #61A7BF;" text=" ">
                                                    <graphic>
                                                       <ImageView fitHeight="39.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>

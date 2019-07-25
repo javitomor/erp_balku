@@ -47,6 +47,8 @@ public class IndexController implements Initializable {
 
 		loadDataTableViewCliente();
 	}
+	
+//	ViewController myController;
 
 	ObservableList<ClienteProperty> dataCliente = FXCollections.observableArrayList();
 
@@ -110,14 +112,10 @@ public class IndexController implements Initializable {
 
 	public void cargarVentanaNuevoCliente(ActionEvent event) throws IOException {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/view/cliente/AltaCliente.fxml"));
-			Scene scene = new Scene(root);
-//        scene.getStylesheets().add("/styles/Styles.css");
-			Stage stage = new Stage();
-			stage.initModality(Modality.APPLICATION_MODAL);
-			stage.setTitle("Alta de Cliente");
-			stage.setScene(scene);
-			stage.showAndWait();
+			Parent parent = FXMLLoader.load(getClass().getResource("/view/cliente/AltaCliente.fxml"));
+			clienteAnchorPane.setPrefSize(700, 700);
+			clienteAnchorPane.getChildren().clear();
+			clienteAnchorPane.getChildren().add(parent);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -162,5 +160,7 @@ public class IndexController implements Initializable {
 
 	public void cargarVentanaConsultarOrdenReparacion() {
 	}
+
+
 
 }
